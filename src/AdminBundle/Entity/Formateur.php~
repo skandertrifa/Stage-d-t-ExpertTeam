@@ -1,0 +1,70 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Formateur
+ *
+ * @ORM\Table(name="formateur")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\FormateurRepository")
+ */
+class Formateur
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Nom", type="string", length=50)
+     */
+    private $nom;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Session",mappedBy="formateur")
+     */
+    protected $sessions;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Formateur
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+}
+

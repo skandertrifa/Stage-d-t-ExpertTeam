@@ -1,0 +1,23 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
+
+ajouter_session:
+    path:     /ajouter
+    defaults: { _controller: AdminBundle:GererSession:ajouterSession }
+
+affecter_user:
+    path:     /affecterUser
+    defaults: { _controller: AdminBundle:GererSession:affecterUser }
+afficher_session:
+    path:     /afficher
+    defaults: { _controller: AdminBundle:GererSession:afficherSession }
+supprimer_session:
+    path:     /supprimer/{id}
+    defaults: { _controller: AdminBundle:GererSession:supprimerSession }
+editer_session:
+    path:     /editer/{id}
+    defaults: { _controller: AdminBundle:GererSession:editerSession }
+afficher_user:
+    path:     /afficherUser/{id}
+    defaults: { _controller: AdminBundle:GererSession:afficherUser }

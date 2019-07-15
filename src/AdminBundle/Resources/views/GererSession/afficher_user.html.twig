@@ -1,0 +1,194 @@
+{#{% extends 'base.html.twig' %}
+
+{% block title %} Session disponibles {% endblock %}
+
+{% block body %}
+
+{% for session in sessions %}
+    {{ session.nom }} <br>
+{% endfor %}
+
+{% endblock %}  #}
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Table Clients</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+        <!--===============================================================================================-->
+    </head>
+    <body>
+
+
+    <div class="limiter">
+        <div class="container">
+            <div class="row">
+                <div class="col ">
+
+                </div>
+
+                <a class="col col-lg-2">
+                    <a href="{{ path('editer_session',{'id' : id_session }) }}" <button class="btn btn-primary">Modifier cette session<em class="fa fa-cog"></em></button> </a>
+                <a class="col col-lg-2">
+                    <a  href="{{ path('afficher_session') }}" <button class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> retour</button> </a>
+            </div>
+        </div>
+        <div class="container-table100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                        <!-- Search form -->
+                        <form class="form-inline active-pink-3 active-pink-4">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Recherche" aria-label="Search" onkeyup="myFunction()">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap-table100">
+                <div class="table100 ver1">
+                    <div class="table100-firstcol">
+                        <table id="myTable">
+                            <thead>
+                            <tr class="row100 head">
+                                <th class="cell100 column1">Client</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+
+
+                            {%  for x in users  %}
+                                <tr class="row100 body">
+                                    <td class="cell100 column1"><button type="button" class="btn btn-secondary btn-sm">O</button>{{ x.username }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="wrap-table100-nextcols js-pscroll">
+                        <div class="table100-nextcols">
+                            <table id="myTable2">
+                                <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column2">Id</th>
+                                    {#<th class="cell100 column3">Nom</th>#}
+                                    <th class="cell100 column3">Email </th>
+                                    <th class="cell100 column4">Last Login</th>
+                                    {#<th class="cell100 column6">Price</th>
+                                    <th class="cell100 column7">Author</th>
+                                    <th class="cell100 column5"><em class="fa fa-cog"></em></th>
+                                    <th class="cell100 column6"><em class="fa fa-cog"></em></th>
+                                    <th class="cell100 column7"><em class="fa fa-cog"></em></th>#}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for x in users %}
+                                    <tr class="row100 body">
+                                        <td class="cell100 column2">{{ x.id }}</td>
+                                        {#<td class="cell100 column3">{{ x.nom }}</td>#}
+                                        {#<td class="cell100 column4">{{ x.dateRelease|date("d/m/Y") }}</td>#}
+                                        <td class="cell100 column3">{{ x.email}}</td>
+                                        <td class="cell100 column4">{{ x.last_login|date("d/m/Y") }}</td>
+                                        {#
+                                        <td class="cell100 column7">{{ x.author }}</td>
+                                        <td class="cell100 column5"> <a  href="{{ path('supprimer_session',{'id' : x.id}) }}"><i class="fa fa-trash"></i></a> </td>
+                                        <td class="cell100 column6"> <a  href="{{ path('editer_session',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">Modifier</button></a> </td>
+                                        <td class="cell100 column7"> <a  href="{{ path('afficher_user',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">  Afficher Clients </button></a> </td>
+
+                                        #}
+
+                                        {#<td class="cell100 column8"> <a  href="{{ path('delete_action', { 'id' : x.id }) }}"><i class="fa fa-trash"></i></a> </td>
+                                        #}
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            var ps = new PerfectScrollbar(this);
+            $(window).on('resize', function(){
+                ps.update();
+            })
+            $(this).on('ps-x-reach-start', function(){
+                $(this).parent().find('.table100-firstcol').removeClass('shadow-table100-firstcol');
+            });
+            $(this).on('ps-scroll-x', function(){
+                $(this).parent().find('.table100-firstcol').addClass('shadow-table100-firstcol');
+            });
+        });
+    </script>
+    <script>
+        function myFunction() {
+            var input, filter, table,table2, tr, td, i, txtValue,tr2;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            table2 = document.getElementById("myTable2");
+            tr = table.getElementsByTagName("tr");
+            tr2 = table2.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        tr2[i].style.display = "";
+
+                    } else {
+                        tr[i].style.display = "none";
+                        tr2[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+    </body>
+    </html>
+
+{% endblock body %}

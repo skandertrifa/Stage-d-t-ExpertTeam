@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}AdminBundle:GererSession:ajouterSession{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"> {% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    {{ form_row(form.nom, {
+        label: 'Nom de la session de la formation '
+    }) }}
+    {{ form_row(form.dateDebut) }}
+    {{ form_row(form.dateFin) }}
+    {# remove user#}
+    {{          form_widget(form.etat,{ 'attr': {'style':'display:none'} })  }}
+    {{          form_row(form.etat,{ 'attr': {'style':'display:none'} })  }}
+    {{ form_row(form.formateur) }}
+    {{ form_row(form.valider, {
+        label :'Valider'
+    } )}}
+    {{ form_end(form) }}
+{% endblock %}

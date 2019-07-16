@@ -1,11 +1,11 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Affecter des utilisateurs à une session{% endblock %}
+{% block title %}Affecter des participants à une session{% endblock %}
 {% block body %}
     <!DOCTYPE html>
     <html lang="en">
 <head>
-    <title>Table Clients</title>
+    <title>Table Participants</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -43,7 +43,7 @@
                     <!-- Search form -->
                     <form class="form-inline active-pink-3 active-pink-4">
                         <i class="fa fa-search" aria-hidden="true"></i>
-                        <input id="myInput" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Recherche d'un utilisateur" aria-label="Search" onkeyup="myFunction()">
+                        <input id="myInput" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Recherche d'un participant" aria-label="Search" onkeyup="myFunction()">
                     </form>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     <table id="myTable">
                         <thead>
                         <tr class="row100 head">
-                            <th class="cell100 column1">Clients</th>
+                            <th class="cell100 column1"><i class="fa fa-user" aria-hidden="true"></i> &nbspParticipants</th>
                         </tr>
                         </thead>
                         <tbody>

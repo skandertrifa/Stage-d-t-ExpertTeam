@@ -63,7 +63,7 @@
                         <!-- Search form -->
                         <form class="form-inline active-pink-3 active-pink-4">
                             <i class="fa fa-search" aria-hidden="true"></i>
-                            <input id="myInput" class="form-control form-control-sm ml-3 w-75" type="text" onkeyup="myFunction()" placeholder="Recherche" aria-label="Search" >
+                            <input id="myInput" class="form-control form-control-sm ml-3 w-75" type="text" onkeyup="myFunction()" placeholder="Recherche d'une session" aria-label="Search" >
                         </form>
                     </div>
                 </div>
@@ -98,14 +98,14 @@
                                 <tr class="row100 head">
 
                                     {#<th class="cell100 column3">Nom</th>#}
-                                    <th class="cell100 column2">Etat</th>
+                                    <th class="cell100 column2"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbspEtat</th>
                                     <th class="cell100 column3"><i class="fa fa-calendar" aria-hidden="true"></i>&nbspDate debut</th>
                                     <th class="cell100 column4"><i class="fa fa-calendar" aria-hidden="true"></i>&nbspDate fin</th>
                                     {#<th class="cell100 column6">Price</th>
                                     <th class="cell100 column7">Author</th>#}
                                     <th class="cell100 column5"><em class="fa fa-cog"></em></th>
-                                    <th class="cell100 column6"><em class="fa fa-cog"></em></th>
-                                    <th class="cell100 column7"><em class="fa fa-cog"></em></th>
+                                    <th class="cell100 column6"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></th>
+                                    <th class="cell100 column7"><i class="fa fa-user" aria-hidden="true"></i></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -136,7 +136,7 @@
                                             </a>
                                         </td>
                                         <td class="cell100 column6"> <a  href="{{ path('editer_session',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">Modifier</button></a> </td>
-                                        <td class="cell100 column7"> <a  href="{{ path('afficher_user',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">  Afficher Clients </button></a> </td>
+                                        <td class="cell100 column7"> <a  href="{{ path('afficher_user',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">  Afficher les participants </button></a> </td>
 
 
 

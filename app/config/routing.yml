@@ -1,3 +1,7 @@
+admin_formateur:
+    resource: "@AdminBundle/Controller/FormateurController.php"
+    type:     annotation
+
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
     prefix:   /session

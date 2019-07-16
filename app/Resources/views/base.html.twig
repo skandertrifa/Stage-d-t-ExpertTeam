@@ -9,10 +9,36 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>    </head>
     <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <a class="navbar-brand" href="#"><img src="{{ asset('images/logo/expert_test_logo.png') }}" title="expert-test-logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('afficher_session') }}">Sessions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#{#todo themes#}">Themes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('formateur_index') }}">Formateurs</a>
+                </li>
+            </ul>
+            <span class="navbar-text ">
+                <a href="{{ path('fos_user_security_login') }}" >Connexion
+
+    </span>
+        </div>
+    </nav>
     <div class="container">
         <div class="row">
             <div class="col ">
-                <a href="{{ path('afficher_session') }}">  <img src="{{ asset('images/logo/expert_test_logo.png') }}" title="expert-test-logo"></a>
+                <a href="{{ path('afficher_session') }}">  </a>
             </div>
 
         </div>

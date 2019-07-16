@@ -21,3 +21,12 @@ editer_session:
 afficher_user:
     path:     /afficherUser/{id}
     defaults: { _controller: AdminBundle:GererSession:afficherUser }
+afficher_tous_users:
+    path:     /afficherTousLesUtilisateurs/{id}
+    defaults: { _controller: AdminBundle:GererSession:afficherTousLesUsers }
+add_userToSession:
+    path:     /ajouterUnUtilisateur/{id_session}/{id_user}
+    defaults: { _controller: AdminBundle:GererSession:addUserToSession }
+remove_userFromSession:
+    path:     /retirerUnUtilisateur/{id_session}/{id_user}
+    defaults: { _controller: AdminBundle:GererSession:removeUserFromSession }

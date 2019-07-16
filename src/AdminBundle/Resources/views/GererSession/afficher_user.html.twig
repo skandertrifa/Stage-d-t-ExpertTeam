@@ -47,9 +47,9 @@
                 </div>
 
                 <a class="col col-lg-2">
-                    <a href="{{ path('editer_session',{'id' : id_session }) }}" <button class="btn btn-primary">Modifier cette session<em class="fa fa-cog"></em></button> </a>
+                    <a href="{{ path('editer_session',{'id' : id_session }) }}" ><button class="btn btn-danger monstyle">Modifier cette session<em class="fa fa-cog"></em></button> </a>
                 <a class="col col-lg-2">
-                    <a  href="{{ path('afficher_session') }}" <button class="btn btn-primary"><i class="fa fa-chevron-left" aria-hidden="true"></i> retour</button> </a>
+                    <a  href="{{ path('afficher_session') }}"> <button class="btn btn-danger monstyle"><i class="fa fa-chevron-left" aria-hidden="true"></i> retour</button> </a>
             </div>
         </div>
         <div class="container-table100">
@@ -59,12 +59,15 @@
 
                     </div>
                     <div class="col-sm">
+
                     </div>
                     <div class="col-sm">
                         <!-- Search form -->
                         <form class="form-inline active-pink-3 active-pink-4">
                             <i class="fa fa-search" aria-hidden="true"></i>
-                            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Recherche" aria-label="Search" onkeyup="myFunction()">
+                            <input id="myInput" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Recherche d'un utilisateur" aria-label="Search" onkeyup="myFunction()">
+                            &nbsp&nbsp&nbsp
+                            <a href="{{ path('afficher_tous_users',{'id' : id_session }) }}" title="ajouter un utilisateur"> <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a>
                         </form>
                     </div>
                 </div>
@@ -75,7 +78,7 @@
                         <table id="myTable">
                             <thead>
                             <tr class="row100 head">
-                                <th class="cell100 column1">Client</th>
+                                <th class="cell100 column1">Clients</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -84,7 +87,7 @@
 
                             {%  for x in users  %}
                                 <tr class="row100 body">
-                                    <td class="cell100 column1"><button type="button" class="btn btn-secondary btn-sm">O</button>{{ x.username }}</td>
+                                    <td class="cell100 column1">{{ x.username }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -96,35 +99,16 @@
                             <table id="myTable2">
                                 <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column2">Id</th>
-                                    {#<th class="cell100 column3">Nom</th>#}
-                                    <th class="cell100 column3">Email </th>
-                                    <th class="cell100 column4">Last Login</th>
-                                    {#<th class="cell100 column6">Price</th>
-                                    <th class="cell100 column7">Author</th>
-                                    <th class="cell100 column5"><em class="fa fa-cog"></em></th>
-                                    <th class="cell100 column6"><em class="fa fa-cog"></em></th>
-                                    <th class="cell100 column7"><em class="fa fa-cog"></em></th>#}
+                                    <th class="cell100 column2">Email</th>
+                                    <th class="cell100 column3"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for x in users %}
                                     <tr class="row100 body">
-                                        <td class="cell100 column2">{{ x.id }}</td>
-                                        {#<td class="cell100 column3">{{ x.nom }}</td>#}
-                                        {#<td class="cell100 column4">{{ x.dateRelease|date("d/m/Y") }}</td>#}
-                                        <td class="cell100 column3">{{ x.email}}</td>
-                                        <td class="cell100 column4">{{ x.last_login|date("d/m/Y") }}</td>
-                                        {#
-                                        <td class="cell100 column7">{{ x.author }}</td>
-                                        <td class="cell100 column5"> <a  href="{{ path('supprimer_session',{'id' : x.id}) }}"><i class="fa fa-trash"></i></a> </td>
-                                        <td class="cell100 column6"> <a  href="{{ path('editer_session',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">Modifier</button></a> </td>
-                                        <td class="cell100 column7"> <a  href="{{ path('afficher_user',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">  Afficher Clients </button></a> </td>
-
-                                        #}
-
-                                        {#<td class="cell100 column8"> <a  href="{{ path('delete_action', { 'id' : x.id }) }}"><i class="fa fa-trash"></i></a> </td>
-                                        #}
+                                        <td class="cell100 column2">{{ x.email }}</td>
+                                        <td class="cell100 column3"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

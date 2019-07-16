@@ -140,7 +140,7 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 
-.limiter {
+/*.limiter {
   width: 100%;
   margin: 0 auto;
   background: #fa71cd;
@@ -148,6 +148,17 @@ iframe {
   background: -o-linear-gradient(bottom, #c471f5, #fa71cd);
   background: -moz-linear-gradient(bottom, #c471f5, #fa71cd);
   background: linear-gradient(bottom, #c471f5, #fa71cd);
+
+
+}*/
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+  background: black;
+  background: -webkit-linear-gradient(bottom, white, white);
+  background: -o-linear-gradient(bottom, white, white);
+  background: -moz-linear-gradient(bottom, white, white);
+  background: linear-gradient(bottom, white, white);
 
 
 }
@@ -309,3 +320,7 @@ th, td {
   box-shadow: 0 0 0 1px #f48fb1;
 }
 
+.monstyle{
+  color: #0000F0;
+  background-color: white;
+}

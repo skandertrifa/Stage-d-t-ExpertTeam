@@ -1,0 +1,158 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Affecter des utilisateurs à une session{% endblock %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+<head>
+    <title>Table Clients</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+
+<div class="limiter">
+
+    <div class="container-table100">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+
+                </div>
+                <div class="col-sm">
+
+                </div>
+                <div class="col-sm">
+                    <!-- Search form -->
+                    <form class="form-inline active-pink-3 active-pink-4">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <input id="myInput" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Recherche d'un utilisateur" aria-label="Search" onkeyup="myFunction()">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-table100">
+            <div class="table100 ver1">
+                <div class="table100-firstcol">
+                    <table id="myTable">
+                        <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column1">Clients</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                        {%  for x in users  %}
+                            <tr class="row100 body">
+                                <td class="cell100 column1">{{ x.username }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="wrap-table100-nextcols js-pscroll">
+                    <div class="table100-nextcols">
+                        <table id="myTable2">
+                            <thead>
+                            <tr class="row100 head">
+                                <th class="cell100 column2">Email</th>
+                                <th class="cell100 column3"><em class="fa fa-cog" style="color : black"></em></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for x in users %}
+                                <tr class="row100 body">
+                                    <td class="cell100 column2">{{ x.email }}</td>
+                                     <td class="cell100 column3"><a href="{{ path('add_userToSession', {id_session : session_id , id_user :x.id }) }}" ><i class="fa fa-plus-circle fa-2x" aria-hidden="true" style="color : blue"></i></a></td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+<script>
+    $('.js-pscroll').each(function(){
+        var ps = new PerfectScrollbar(this);
+        $(window).on('resize', function(){
+            ps.update();
+        })
+        $(this).on('ps-x-reach-start', function(){
+            $(this).parent().find('.table100-firstcol').removeClass('shadow-table100-firstcol');
+        });
+        $(this).on('ps-scroll-x', function(){
+            $(this).parent().find('.table100-firstcol').addClass('shadow-table100-firstcol');
+        });
+    });
+</script>
+    <script>
+        function myFunction() {
+            var input, filter, table, table2, tr, td, td2, i, txtValue, tr2, txtValue2;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            table2 = document.getElementById("myTable2");
+            tr = table.getElementsByTagName("tr");
+            tr2 = table2.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                td2 = tr2[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    txtValue2 = td2.textContent || td2.innerText;
+                    if  ((txtValue.toUpperCase().indexOf(filter) > -1)  || (txtValue2.toUpperCase().indexOf(filter) > -1) ){
+                        tr[i].style.display = "";
+                        tr2[i].style.display = "";
+
+                    } else {
+                        tr[i].style.display = "none";
+                        tr2[i].style.display = "none";
+                    }
+                }
+
+            }
+        }
+    </script>
+<!--===============================================================================================-->
+<script src="{{ asset('js/main.js') }}"></script>
+
+</body>
+</html>
+
+{% endblock body %}

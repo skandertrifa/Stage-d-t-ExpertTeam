@@ -3,6 +3,7 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\Session;
+use AdminBundle\Entity\User;
 use AdminBundle\Form\SessionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -208,11 +209,89 @@ class GererSessionController extends Controller
 
     public function affecterUserAction()
     {
-        return $this->render('@Admin/GererSession/affecter_user.html.twig', array(
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $users = $repository->findAll();
+        $enityManager = $this->getDoctrine()->getManager();
 
+
+        return $this->render('@Admin/GererSession/affecter_user.html.twig', array(
+                'users' => $users,
         ));
     }
 
+    //***************************************************
+
+    // Afficher tous les utilisateurs non affecté à cette session de formation ( réstants) !
+
+    //***************************************************
+    public function afficherTousLesUsersAction($id)
+    {
+        //$repository = $this->getDoctrine()->getRepository(User::class);
+        //$users = $repository->findAll();
+        // requête sql pour chercher les clients de la session(conjugé)
+        $entityManager = $this->getDoctrine()->getManager();
+        $conn = $entityManager->getConnection();
+        $sql = 'SELECT * FROM test.fos_user WHERE id NOT IN (SELECT user_id FROM session_user WHERE session_id=? )';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array($id));
+        $clients = $stmt->fetchAll();
 
 
+        return $this->render('@Admin/GererSession/afficher_all_users.html.twig', array(
+            'users' => $clients,
+            'session_id' => $id,
+        ));
+    }
+    //***************************************************
+
+    // ajouter un utilisateur à une session
+
+    //***************************************************
+    public function addUserToSessionAction ($id_session,$id_user)
+    {
+            /*$repo = $this->getDoctrine()->getRepository(Session::class);
+            $session = $repo->findOneById($id_session);
+            $repo2 = $this->getDoctrine()->getRepository(User::class);
+            $user = $repo2->findOneById($id_user);
+
+            $session->addUser($user);
+            $user->addSession($session);
+            /*dump($session);
+            dump($user);
+            die();*/
+            $entityManager = $this->getDoctrine()->getManager();
+            $conn = $entityManager->getConnection();
+            $sql = 'INSERT INTO test.session_user (`session_id`, `user_id`) VALUES (?, ?)';
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                $id_session,
+                $id_user,
+            ]);
+            return $this->redirectToRoute('afficher_user',[
+                    'id' => $id_session,
+                ]
+                );
+
+    }
+    //***************************************************
+
+    //  supprimer un utilisateur d'une session
+
+    //***************************************************
+    public function removeUserFromSessionAction ($id_session,$id_user)
+    {
+        $conn = $this->getDoctrine()->getManager()->getConnection();
+        $sql = 'DELETE FROM test.session_user WHERE test.session_user.session_id = ? AND test.session_user.user_id = ? ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            $id_session,
+            $id_user,
+        ]);
+
+
+        return $this->redirectToRoute('afficher_user',[
+                'id' => $id_session,
+            ]
+        );
+    }
 }

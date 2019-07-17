@@ -1,3 +1,7 @@
+admin_theme:
+    resource: "@AdminBundle/Resources/config/routing/theme.yml"
+    prefix:     /theme
+
 admin_formateur:
     resource: "@AdminBundle/Controller/FormateurController.php"
     type:     annotation

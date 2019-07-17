@@ -101,19 +101,15 @@
                                     <th class="cell100 column2"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbspEtat</th>
                                     <th class="cell100 column3"><i class="fa fa-calendar" aria-hidden="true"></i>&nbspDate debut</th>
                                     <th class="cell100 column4"><i class="fa fa-calendar" aria-hidden="true"></i>&nbspDate fin</th>
-                                    {#<th class="cell100 column6">Price</th>
-                                    <th class="cell100 column7">Author</th>#}
-                                    <th class="cell100 column5"><em class="fa fa-cog"></em></th>
-                                    <th class="cell100 column6"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></th>
-                                    <th class="cell100 column7"><i class="fa fa-user" aria-hidden="true"></i></th>
+                                    <th class="cell100 column5"><img src="{{ asset('images/icons/teacher_icon/teacher3.png') }}">&nbsp&nbspFormateur</th>
+                                    <th class="cell100 column6"><em class="fa fa-cog"></em></th>
+                                    <th class="cell100 column7"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></th>
+                                    <th class="cell100 column8"><i class="fa fa-user" aria-hidden="true"></i></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {#  protip: <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i> for pending animation   #}
                                 {% for x in sessions %}
                                     <tr class="row100 body">
-                                        {#<td class="cell100 column3">{{ x.nom }}</td>#}
-                                        {#<td class="cell100 column4">{{ x.dateRelease|date("d/m/Y") }}</td>#}
                                         <td class="cell100 column2">
 
                                          {% if  x.etat  == "en cours" %} <div style="color:darkkhaki;"> <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>&nbsp {{ x.etat }}</div></td>
@@ -128,20 +124,15 @@
 
                                         <td class="cell100 column3">{{ x.dateDebut|date("d/m/Y") }}</td>
                                         <td class="cell100 column4">{{ x.dateFin|date("d/m/Y") }}</td>
-                                        {#
-                                        <td class="cell100 column7">{{ x.author }}</td>#}
-                                        <td class="cell100 column5">
+                                        <td class="cell100 column5">{{ x.formateur }}</td>
+                                        <td class="cell100 column6">
                                             <a  href="{{ path('supprimer_session',{'id' : x.id}) }}"><a class="btn btn-danger" href="#">
                                                     <i class="fa fa-trash-o fa-lg "></i> Supprimer</a>
                                             </a>
                                         </td>
-                                        <td class="cell100 column6"> <a  href="{{ path('editer_session',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">Modifier</button></a> </td>
-                                        <td class="cell100 column7"> <a  href="{{ path('afficher_user',{'id' : x.id}) }}"><button type="button" class="btn btn-secondary btn-sm">  Afficher les participants </button></a> </td>
+                                        <td class="cell100 column7"> <a  href="{{ path('editer_session',{'id' : x.id}) }}"><button  class="btn btn-secondary ">Modifier</button></a> </td>
+                                        <td class="cell100 column8"> <a  href="{{ path('afficher_user',{'id' : x.id}) }}"><button class="btn btn-secondary ">  Afficher les participants </button></a> </td>
 
-
-
-                                        {#<td class="cell100 column8"> <a  href="{{ path('delete_action', { 'id' : x.id }) }}"><i class="fa fa-trash"></i></a> </td>
-                                        #}
                                     </tr>
                                 {% endfor %}
                                 </tbody>

@@ -2,6 +2,7 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Entity\Formateur;
 use AdminBundle\Entity\Session;
 use AdminBundle\Entity\User;
 use AdminBundle\Form\SessionType;
@@ -148,6 +149,11 @@ class GererSessionController extends Controller
                 'choices'  => $choix,
                 ] )
             ->add('valider',SubmitType::class)
+            ->add('formateur',EntityType::class,[
+                'class' => 'AdminBundle\Entity\Formateur',
+                'multiple' => false,
+                'expanded' => false,
+            ])
             ->getForm();
 
 

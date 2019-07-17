@@ -1,0 +1,135 @@
+{% extends "@FOSUser/layout.html.twig" %}
+{#{% block fos_user_content %}
+
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <label for="username">{{ 'security.login.username'|trans }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+
+        <label for="password">{{ 'security.login.password'|trans }}</label>
+        <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    </form>
+
+{% endblock fos_user_content %}#}
+{% block fos_user_content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Connexion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main1.css')}}">
+    <!--===============================================================================================-->
+</head>
+<body>
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="login100-form validate-form">
+
+            {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+
+
+					<span class="login100-form-title p-b-33">
+						Se connecter
+					</span>
+
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <input class="input100" type="text" name="_username" placeholder="Nom d'utilisateur" value="{{ last_username }}" autocomplete="username">
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+
+                <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
+
+
+
+                    <input class="input100" id="password" type="password" name="_password" placeholder="Mot de passe" autocomplete="current-password" required="required">
+                    <span class="focus-input100-1"></span>
+                    <span class="focus-input100-2"></span>
+                </div>
+
+                <div class="container-login100-form-btn m-t-20" >
+                    <button class="login100-form-btn" type="submit" id="_submit" name="_submit">
+                        Connexion
+                    </button>
+                </div>
+
+                <div class="text-center p-t-45 p-b-4">
+						<span class="txt1">
+							Vous avez oublié
+						</span>
+
+                    <a href="#" class="txt2 hov1">
+                        Nom d'utilisateur / Mot de passe?
+                    </a>
+                </div>
+
+                <div class="text-center">
+						<span class="txt1">
+							Vous voulez créer un compte?
+						</span>
+
+                    <a href="#" class="txt2 hov1">
+                        S'inscrire
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+<script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('js/main1.js') }}"></script>
+
+</body>
+</html>
+{% endblock fos_user_content %}

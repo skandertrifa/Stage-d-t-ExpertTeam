@@ -28,6 +28,10 @@ services:
         resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+    app.form.registration:
+        class: AdminBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:

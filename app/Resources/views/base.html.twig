@@ -16,8 +16,6 @@
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
         <!--===============================================================================================-->
-
-
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -44,7 +42,12 @@
                 </li>
             </ul>
             <span class="navbar-text ">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                 <a href="{{ path('fos_user_security_logout') }}" >Logout </a>
+             {% else %}
                 <a href="{{ path('fos_user_security_login') }}" >Connexion </a>
+             {% endif %} 
+
 
     </span>
         </div>
@@ -71,6 +74,13 @@
 
 
     </body>
+<script>
+    // for active nav bar on switching ( header)
+    $(document).ready(function() {
+        $('li.active').removeClass('active');
+        $('a[href="' + location.pathname + '"]').closest('li').addClass('active');
+    });
+</script>
 </html>
 
 

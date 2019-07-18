@@ -49,8 +49,22 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
+
+
+
+
+{% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
+
+    <div class="alert alert-danger" role="alert">
+            Vous êtes déjà connecté !
+
+    </div>
+
+{% else %}
+
+
 
 <div class="limiter">
     <div class="container-login100">
@@ -92,7 +106,7 @@
 							Vous avez oublié
 						</span>
 
-                    <a href="#" class="txt2 hov1">
+                    <a href="{{ path('fos_user_resetting_request') }}" class="txt2 hov1">
                         Nom d'utilisateur / Mot de passe?
                     </a>
                 </div>
@@ -102,7 +116,7 @@
 							Vous voulez créer un compte?
 						</span>
 
-                    <a href="#" class="txt2 hov1">
+                    <a href="{{ path('fos_user_registration_register') }}" class="txt2 hov1">
                         S'inscrire
                     </a>
                 </div>
@@ -132,4 +146,8 @@
 
 </body>
 </html>
+
+
+
+{% endif %}
 {% endblock fos_user_content %}

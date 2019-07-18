@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -19,12 +21,28 @@ class User extends BaseUser
      */
     protected $id;
 
+
+
     /**
      * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Session")
      */
     protected $session;
 
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=50)
+     */
+    private $type;
+
+
+
+
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -63,5 +81,29 @@ class User extends BaseUser
     public function getSession()
     {
         return $this->session;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return User
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

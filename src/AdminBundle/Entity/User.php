@@ -125,10 +125,11 @@ class User extends BaseUser
      */
     protected $canalDeCommunication;
 
-
-
-
-
+    /**
+     * @ORM\Column(nullable=true)
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ClientPro",inversedBy="users")
+     */
+    protected $clientPro;
 
 
 
@@ -317,5 +318,29 @@ class User extends BaseUser
     public function getCanalDeCommunication()
     {
         return $this->canalDeCommunication;
+    }
+
+    /**
+     * Set clientPro
+     *
+     * @param \AdminBundle\Entity\ClientPro $clientPro
+     *
+     * @return User
+     */
+    public function setClientPro(\AdminBundle\Entity\ClientPro $clientPro = null)
+    {
+        $this->clientPro = $clientPro;
+
+        return $this;
+    }
+
+    /**
+     * Get clientPro
+     *
+     * @return \AdminBundle\Entity\ClientPro
+     */
+    public function getClientPro()
+    {
+        return $this->clientPro;
     }
 }

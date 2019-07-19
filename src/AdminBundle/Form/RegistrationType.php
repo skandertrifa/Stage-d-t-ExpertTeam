@@ -4,26 +4,42 @@
 
 namespace AdminBundle\Form;
 
+use AdminBundle\Entity\ClientPro;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+
+
 
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //$repository = $this->Doctrine()->getRepository(ClientPro::class);
+        //$clientspro = $repository->findAll();
+
         $builder->add('type',ChoiceType::class,[
             'choices'  => [
-                'Particulier' => 'planifié',
-
+                'Particulier' => 'Particulier',
+                'ClientPro'=> 'Client pro'
             ],
-            'empty_data' => 'Particuler'
+            'empty_data' => 'Particulier'
         ])
+                ->add('clientPro',EntityType::class,[
+                    'class' => 'AdminBundle\Entity\ClientPro',
+                    'multiple' => false,
+                    'expanded' => false,
+                    'required' => false,
+                    'empty_data' => ''
+                ])
                 ->add('numeroTelephone')
                 ->add('prenom')
                 ->add('nom')
                 ->add('canalDeCommunication')
-                ->add('profession');
+                ->add('profession')
+                ->add("valider",SubmitType::class);
 
     }
 

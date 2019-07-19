@@ -1,0 +1,258 @@
+{% extends '@FOSUser/layout.html.twig' %}
+
+
+{#***********************************NORMAL BOOTSTRAP FORM**********************************************#}
+
+
+{#
+{% block body %}
+{% trans_default_domain 'FOSUserBundle' %}
+    <h1>Inscription</h1>
+    {{ form_start(form, {
+        'method': 'post',
+        'action': path('fos_user_registration_register'),
+        'attr': {'class':
+            'fos_user_registration_register'
+    }}          ) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.plainPassword) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
+    {{ form_row(form.numeroTelephone) }}
+    <div onchange="clientpro()">
+        {{ form_row(form.type) }}
+    </div>
+    <div id="clientpro" style=" display: none" > {{ form_row(form.clientPro) }} </div>
+
+    {{ form_row(form.profession) }}
+    {{ form_row(form.canalDeCommunication) }}
+    {{ form_row(form.valider,{
+        'label' : "s'inscrire"
+    }
+    ) }}
+
+    {{ form_end(form) }}
+
+<script>
+    function clientpro (){
+
+
+        if (document.getElementById('clientpro').style.display != 'block')
+        {
+            document.getElementById('clientpro').style.display='block';
+        }
+        else {
+            document.getElementById('clientpro').style.display='none';
+        }
+
+
+
+    }
+</script>
+
+{% endblock body %}
+
+#}
+
+
+
+
+{#******************************Template FORM****************************************#}
+
+{% block fos_user_content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Connexion</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/util1.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main1.css')}}">
+        <!--===============================================================================================-->
+    </head>
+<body>
+    {% trans_default_domain 'FOSUserBundle' %}
+
+
+
+    {% if is_granted ('IS_AUTHENTICATED_REMEMBERED') %}
+
+        <div class="alert alert-danger" role="alert">
+            Vous avez déjà un compte
+
+        </div>
+
+    {% else %}
+
+        {{ form_start(form, {
+            'method': 'post',
+            'action': path('fos_user_registration_register'),
+            'attr': {'class':
+                'fos_user_registration_register'
+            }}          ) }}
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+
+                    {{ form_start(form)}}
+                    <form action="{{ path("fos_user_registration_register") }}" method="post" class="login100-form validate-form fos_user_registration_register">
+
+
+                        <span class="login100-form-title p-b-33">
+						Inscription
+					</span>
+
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.username) }}
+                            {{ form_widget(form.username,{ 'attr' : {'class': 'input100 ','placeholder':"Nom d'utilisateur"  }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.email) }}
+                            {{ form_widget(form.email,{ 'attr' : {'class': 'input100 ','placeholder':"Email"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.plainPassword.first) }}
+                            {{ form_widget(form.plainPassword.first,{ 'attr' : {'class': 'input100 ','placeholder':"Mot de passe"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.plainPassword.second) }}
+                            {{ form_widget(form.plainPassword.second,{ 'attr' : {'class': 'input100 ','placeholder':"Répeter le mot de passe"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.nom) }}
+                            {{ form_widget(form.nom,{ 'attr' : {'class': 'input100 ','placeholder':"Nom"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.prenom) }}
+                            {{ form_widget(form.prenom,{ 'attr' : {'class': 'input100 ','placeholder':"Prénom"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.numeroTelephone) }}
+                            {{ form_widget(form.numeroTelephone,{ 'attr' : {'class': 'input100 ','placeholder':"Numero de téléphone"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input" onchange="clientpro()">
+                            {{ form_errors(form.type) }}
+                            {{ form_widget(form.type,{ 'attr' : {'class': 'input100 ','placeholder':"Type"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" id="clientpro" style="display:none;">
+                            {{ form_errors(form.clientPro) }}
+                            {{          form_widget(    form.clientPro,{ 'attr' : {'class': 'input100 ','placeholder':"Client pro"   }    }    )              }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.profession) }}
+                            {{ form_widget(form.profession,{ 'attr' : {'class': 'input100 ','placeholder':"Profession"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.canalDeCommunication) }}
+                            {{ form_widget(form.canalDeCommunication,{ 'attr' : {'class': 'input100 ','placeholder':"Canal de communication"   }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+
+
+
+                        <div class="container-login100-form-btn m-t-20" >
+
+                            {{ form_widget(form.valider,{
+                                'label' : "s'inscrire",
+                                'attr' :  {
+                                    'class': 'login100-form-btn',
+                                    'type' :'sumbit',
+                                    'id' : '_submit',
+                                    'name' : '_submit',
+                                    }
+                                }
+                            ) }}
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </form>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+        <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('js/main1.js') }}"></script>
+        <script>
+            function clientpro (){
+
+
+                if (document.getElementById('clientpro').style.display != 'block')
+                {
+                    document.getElementById('clientpro').style.display='block';
+                }
+                else {
+                    document.getElementById('clientpro').style.display='none';
+                }
+
+
+
+            }
+
+
+
+        </script>
+        </body>
+        </html>
+
+
+
+    {% endif %}
+{% endblock fos_user_content %}

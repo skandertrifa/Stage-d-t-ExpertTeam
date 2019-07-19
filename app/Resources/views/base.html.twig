@@ -35,7 +35,7 @@
                     <a class="nav-link" href="{{ path('afficher_session') }}">Sessions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('theme_index') }}">Themes</a>
+                    <a class="nav-link" href="{{ path('theme_index') }}">Thèmes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('formateur_index') }}">Formateurs</a>
@@ -77,6 +77,116 @@
 
 
     </body>
+    <!-- mfn_hook_content_after --><!-- mfn_hook_content_after -->
+    <!-- #Footer -->
+    {#<footer id="Footer" class="clearfix">
+
+
+        <div class="widgets_wrapper" style=""><div class="container"><div class="column one-third"><aside id="text-9" class="widget widget_text"><h4>A propos</h4>			<div class="textwidget"><p style="text-align:justify;">Notre plateforme est destinée aux professionnels souhaitent s’entraîner à passer les certifications ISTQB, IQBBA, Selenium et Agile et ainsi tester leurs compétences pour garantir la réussite. Nous mettons à votre disposition une panoplie d’examens blancs et d’exercices corrigés sous forme de pack disponible pour chaque niveau, afin de rendre votre révision plus facile et vous aider à réussir votre certification.</p>
+                        </div>
+                    </aside></div><div class="column one-third"><aside id="text-10" class="widget widget_text"><h4>Notre mission</h4>			<div class="textwidget"><p style="text-align: justify;">Notre mission est de vous garantir la réussite dans la certification ISTQB. Notre plateforme est conçue pour vous aider à vous préparer pour passer l’examen officiel d’ISTQB de façon autonome et selon votre rythme.<br />
+                                Nous vous fournissons plusieurs exercices corrigés avec commentaires et justifications, et des examens blancs similaires aux épreuves de l’ISTQB.</p>
+                        </div>
+                    </aside></div><div class="column one-third"><aside id="text-11" class="widget widget_text"><h4>Liens de raccourci</h4>			<div class="textwidget"><ul style="float: left; width: 46%; margin-left: 4%; list-style: square; line-height: 27px;"><li><a href="http://expertest.tn/">Accueil</a></li><li><a href="http://expertest.tn/istqb-fondation/">Niveau Fondation</a></li><li><a href="http://expertest.tn/niveau-avance/">Niveau Avancé</a></li><li><a href="http://expertest.tn/blog/">Blog</a></li></ul><ul style="float: left; width: 46%; margin-left: 4%; list-style: square; line-height: 27px;"><li><a href="http://expertest.tn/mon-compte/">Mon Compte</a></li><li><a href="http://expertest.tn/mon-profil/">Mon profil</a></li><li><a href="http://expertest.tn/boutique/">Boutique</a></li><li><a href="http://expertest.tn/panier/">Panier</a></li></ul></div>
+                    </aside></div></div></div>
+
+
+        <div class="footer_copy">
+            <div class="container">
+                <div class="column one">
+
+                    <a id="back_to_top" class="button button_left button_js" href=""><span class="button_icon"><i class="icon-up-open-big"></i></span></a>
+                    <!-- Copyrights -->
+                    <div class="copyright">
+                        © 2017 ExperTest. All Rights Reserved |  Powered by <a href="http://www.expertunisie.com" target="_blank"><span style="color: ##b51c63; letter-spacing: 0.06em;">ExperTeam</span></a></span>					</div>
+
+                    <ul class="social"><li class="facebook"><a target="_blank" href="https://www.facebook.com/Expert.Team.Tunisie" title="Facebook"><i class="icon-facebook"></i></a></li></ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </footer>#}
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4" style="background-color: black">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase" style="color:white">A propos</h5> <br>
+                    <p style="color:white ;font-size: 15px" >Notre plateforme est destinée aux professionnels souhaitent s’entraîner à passer les certifications ISTQB, IQBBA, Selenium et Agile et ainsi tester leurs compétences pour garantir la réussite. Nous mettons à votre disposition une panoplie d’examens blancs et d’exercices corrigés sous forme de pack disponible pour chaque niveau,
+                        afin de rendre votre révision plus facile et vous aider à réussir votre certification.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <!-- Content -->
+                    <h5 class="text-uppercase" style="color:white">Notre mission</h5> <br>
+                    <p style="color:white ;font-size: 15px" >
+                        Notre mission est de vous garantir la réussite dans la certification ISTQB. Notre plateforme est conçue pour vous aider à vous préparer pour passer l’examen officiel d’ISTQB de façon autonome et selon votre rythme.
+                        Nous vous fournissons plusieurs exercices corrigés avec commentaires et justifications, et des examens blancs similaires aux épreuves de l’ISTQB.
+                    </p>
+
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase" style="color:white">Liens de raccourci</h5>
+
+                    <ul class="list-unstyled" >
+                        <li >
+                            <a style="color:red" href="{{ path('afficher_session') }}">Session</a>
+                        </li>
+                        <li >
+                            <a style="color:red" href="{{ path('formateur_index') }}">Formateur</a>
+                        </li>
+                        <li >
+                            <a style="color:red" href="{{ path('theme_index') }}">Theme</a>
+                        </li>
+                        <li >
+                            <a style="color:red" href="{{ path('clientpro_index') }}">Client pro</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style='color:white'> © 2017 ExperTest. All Rights Reserved | Powered by
+            <a href="/http://www.expertunisie.com/" style='color:red'>ExperTeam </a>
+            <br>
+            <a href="https://www.facebook.com/Expert.Team.Tunisie"> <i class="fa fa-facebook-official" aria-hidden="true"> </i></a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
 <script>
     // for active nav bar on switching ( header)
     $(document).ready(function() {

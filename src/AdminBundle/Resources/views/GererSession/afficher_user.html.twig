@@ -99,16 +99,22 @@
                             <table id="myTable2">
                                 <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column2">Email</th>
-                                    <th class="cell100 column3"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
+                                    <th class="cell100 column2">Type</th>
+                                    <th class="cell100 column3">Email</th>
+                                    <th class="cell100 column4"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for x in users %}
                                     <tr class="row100 body">
-                                        <td class="cell100 column2">{{ x.email }}</td>
-                                        <td class="cell100 column3"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
+                                        <td class="cell100 column2">
+                                            {%   if x.type == "Particulier" %} {{  x.type }}
+                                            {% else %} {{ x.client_pro }}
+                                            {% endif %}
+                                        </td>
+                                        <td class="cell100 column3">{{ x.email }}</td>
+                                        <td class="cell100 column4"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

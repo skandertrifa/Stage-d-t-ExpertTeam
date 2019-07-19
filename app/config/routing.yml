@@ -1,3 +1,7 @@
+admin_client_pro:
+    resource: "@AdminBundle/Controller/ClientProController.php"
+    type:     annotation
+
 admin_theme:
     resource: "@AdminBundle/Resources/config/routing/theme.yml"
     prefix:     /theme

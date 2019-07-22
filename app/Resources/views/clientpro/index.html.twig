@@ -1,14 +1,3 @@
-{#{% extends 'base.html.twig' %}
-
-{% block title %} Session disponibles {% endblock %}
-
-{% block body %}
-
-{% for session in sessions %}
-    {{ session.nom }} <br>
-{% endfor %}
-
-{% endblock %}  #}
 {% extends 'base.html.twig' %}
 {% block body %}
 
@@ -16,7 +5,7 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <title>Table Clients</title>
+        <title>Table Client pro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--===============================================================================================-->
@@ -41,16 +30,7 @@
 
     <div class="limiter">
         <div class="container">
-            <div class="row">
-                <div class="col ">
 
-                </div>
-
-                <a class="col col-lg-2">
-                    <a href="{{ path('editer_session',{'id' : id_session }) }}" ><button class="btn btn-danger monstyle">Modifier cette session<em class="fa fa-cog"></em></button> </a>
-                <a class="col col-lg-2">
-                    <a  href="{{ path('afficher_session') }}"> <button class="btn btn-danger monstyle"><i class="fa fa-chevron-left" aria-hidden="true"></i> retour</button> </a>
-            </div>
         </div>
         <div class="container-table100">
             <div class="container">
@@ -65,9 +45,11 @@
                         <!-- Search form -->
                         <form class="form-inline active-pink-3 active-pink-4">
                             <i class="fa fa-search" aria-hidden="true"></i>
-                            <input id="myInput" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Recherche d'un participant" aria-label="Search" onkeyup="myFunction()">
+                            <input id="myInput" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Recherche d'un client pro" aria-label="Search" onkeyup="myFunction()">
                             &nbsp&nbsp&nbsp
-                            <a href="{{ path('afficher_tous_users',{'id' : id_session }) }}" title="ajouter un utilisateur"> <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a>
+
+                            <a href="{{ path('clientpro_new') }}" title="ajouter un client pro"> <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a>
+
                         </form>
                     </div>
                 </div>
@@ -78,16 +60,18 @@
                         <table id="myTable">
                             <thead>
                             <tr class="row100 head">
-                                <th class="cell100 column1"> <i class="fa fa-user" aria-hidden="true"></i> &nbspParticipants</th>
+                                <th class="cell100 column1">
+
+                                    Client pro</th>
                             </tr>
                             </thead>
                             <tbody>
 
 
 
-                            {%  for x in users  %}
+                            {%  for x in clientPros  %}
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">{{ x.nom }}&nbsp{{ x.prenom }}</td>
+                                    <td class="cell100 column1">{{ x.nom }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -99,28 +83,17 @@
                             <table id="myTable2">
                                 <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column2">Type</th>
-                                    <th class="cell100 column3">Email</th>
-                                    <th class="cell100 column4">Numéro de téléphone</th>
-                                    <th class="cell100 column5">Profession</th>
-                                    <th class="cell100 column6">Canal de communication</th>
-                                    <th class="cell100 column7"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
+                                    <th class="cell100 column2"><em title="modifier le client pro" class="fa fa-cog" style="color : black"></em></th>
+                                    <th class="cell100 column3"><i title="supprimer le client pro" class="fa fa-trash" aria-hidden="true"></i></th>
+
 
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for x in users %}
+                                {% for x in clientPros %}
                                     <tr class="row100 body">
-                                        <td class="cell100 column2">
-                                            {%   if x.type == "Particulier" %} {{  x.type }}
-                                            {% else %} {{ x.client_pro }}
-                                            {% endif %}
-                                        </td>
-                                        <td class="cell100 column3">{{ x.email }}</td>
-                                        <td class="cell100 column4">{{ x.numero_telephone }}</td>
-                                        <td class="cell100 column5">{{ x.profession }}</td>
-                                        <td class="cell100 column6">{{ x.canal_de_communication }}</td>
-                                        <td class="cell100 column7"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
+                                        <td class="cell100 column2"> <a href="{{ path('clientpro_edit' , { id :x.id }  ) }}">  <button class="btn btn-outline-secondary" style="color: #0000F0">Modifier</button>   </a>  </td>
+                                        <td class="cell100 column3"> <a href="{{ path('clientpro_delete' , { id :x.id }  ) }}">    <button class="btn btn-outline-secondary" style="color: #bd2130">Supprimer</button> </a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -167,27 +140,9 @@
             tr2 = table2.getElementsByTagName("tr");
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[0];
-                td0 = tr2[i].getElementsByTagName("td")[0];
-                td1 = tr2[i].getElementsByTagName("td")[1];
-                td2 = tr2[i].getElementsByTagName("td")[2];
-                td3 = tr2[i].getElementsByTagName("td")[3];
-                td4 = tr2[i].getElementsByTagName("td")[4];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
-                    txtValue0 = td0.textContent || td0.innerText;
-                    txtValue1 = td1.textContent || td1.innerText;
-                    txtValue2 = td2.textContent || td2.innerText;
-                    txtValue3 = td3.textContent || td3.innerText;
-                    txtValue4 = td4.textContent || td4.innerText;
-                    if (   (txtValue.toUpperCase().indexOf(filter)  > -1)
-                        || (txtValue0.toUpperCase().indexOf(filter) > -1)
-                        || (txtValue1.toUpperCase().indexOf(filter) > -1)
-                        || (txtValue2.toUpperCase().indexOf(filter) > -1)
-                        || (txtValue3.toUpperCase().indexOf(filter) > -1)
-                        || (txtValue4.toUpperCase().indexOf(filter) > -1)
-                       )
-
-                    {
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                         tr2[i].style.display = "";
 

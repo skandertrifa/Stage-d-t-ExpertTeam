@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Formateur</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ formateur.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formateur_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('formateur_edit', { 'id': formateur.id }) }}">Edit</a>
+        </li>
+    </ul>
+{% endblock %}

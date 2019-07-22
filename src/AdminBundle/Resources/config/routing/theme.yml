@@ -1,0 +1,18 @@
+theme_index:
+    path:     /
+    defaults: { _controller: "AdminBundle:Theme:index" }
+    methods:  GET
+
+theme_new:
+    path:     /new
+    defaults: { _controller: "AdminBundle:Theme:new" }
+    methods:  [GET, POST]
+
+theme_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminBundle:Theme:edit" }
+    methods:  [GET, POST]
+
+theme_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminBundle:Theme:delete" }

@@ -300,4 +300,23 @@ class GererSessionController extends Controller
             ]
         );
     }
+
+    //***************************************************
+
+    //  relancer un participant (qui n'a pas payé par exemple )
+
+    //***************************************************
+
+    public function relancerParticipantAction (\Swift_Mailer $mailer)
+    {
+        $message = (new \Swift_Message('Hello Email'));
+        $message->setFrom('skander.trifa2@gmail.com')
+                ->setTo('skander.trifa@gmail.com')
+                ->setBody('Test Swift Mailer !', 'text/html');
+        $mailer->send($message);
+
+        return $this->redirectToRoute('afficher_session');
+
+    }
+
 }

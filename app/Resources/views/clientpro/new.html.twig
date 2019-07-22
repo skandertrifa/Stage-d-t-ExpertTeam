@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a  href="{{ path('formateur_index') }}">
+        <button class="btn btn-danger" style="color: #0000F0;background-color: white;">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            retour
+        </button>
+    </a>
+    <h1>Création d'un client pro</h1>
+
+    {{ form_start(form) }}
+    {{ form_row (form.nom)}}
+    {{ form_row (form.valider, {
+        label : 'Valider'
+    }) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+

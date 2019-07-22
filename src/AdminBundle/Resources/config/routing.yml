@@ -30,3 +30,6 @@ add_userToSession:
 remove_userFromSession:
     path:     /retirerUnUtilisateur/{id_session}/{id_user}
     defaults: { _controller: AdminBundle:GererSession:removeUserFromSession }
+relancer_participant:
+    path:     /relancerParticipant
+    defaults: { _controller: AdminBundle:GererSession:relancerParticipant }

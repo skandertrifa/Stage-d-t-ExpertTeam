@@ -63,7 +63,7 @@
 
                         {%  for x in users  %}
                             <tr class="row100 body">
-                                <td class="cell100 column1">{{ x.username }}</td>
+                                <td class="cell100 column1">{{ x.nom }}&nbsp{{ x.prenom }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -77,7 +77,10 @@
                             <tr class="row100 head">
                                 <th class="cell100 column2">Type</th>
                                 <th class="cell100 column3">Email</th>
-                                <th class="cell100 column4"><em class="fa fa-cog" style="color : black"></em></th>
+                                <th class="cell100 column4">Numéro de téléphone</th>
+                                <th class="cell100 column5">Profession</th>
+                                <th class="cell100 column6">Canal de communication</th>
+                                <th class="cell100 column7"><em class="fa fa-cog" style="color : black"></em></th>
 
                             </tr>
                             </thead>
@@ -91,7 +94,10 @@
 
                                     </td>
                                     <td class="cell100 column3">{{ x.email }}</td>
-                                     <td class="cell100 column4"><a href="{{ path('add_userToSession', {id_session : session_id , id_user :x.id }) }}" ><i class="fa fa-plus-circle fa-2x" aria-hidden="true" style="color : blue"></i></a></td>
+                                    <td class="cell100 column4">{{ x.numero_telephone }}</td>
+                                    <td class="cell100 column5">{{ x.profession }}</td>
+                                    <td class="cell100 column6">{{ x.canal_de_communication }}</td>
+                                    <td class="cell100 column7"><a href="{{ path('add_userToSession', {id_session : session_id , id_user :x.id }) }}" ><i class="fa fa-plus-circle fa-2x" aria-hidden="true" style="color : blue"></i></a></td>
 
                                 </tr>
                             {% endfor %}
@@ -130,7 +136,7 @@
 </script>
     <script>
         function myFunction() {
-            var input, filter, table, table2, tr, td, td2, i, txtValue, tr2, txtValue2;
+            var input, filter, table,table2, tr, td, i, txtValue,tr2;
             input = document.getElementById("myInput");
             filter = input.value.toUpperCase();
             table = document.getElementById("myTable");
@@ -139,11 +145,27 @@
             tr2 = table2.getElementsByTagName("tr");
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[0];
-                td2 = tr2[i].getElementsByTagName("td")[0];
+                td0 = tr2[i].getElementsByTagName("td")[0];
+                td1 = tr2[i].getElementsByTagName("td")[1];
+                td2 = tr2[i].getElementsByTagName("td")[2];
+                td3 = tr2[i].getElementsByTagName("td")[3];
+                td4 = tr2[i].getElementsByTagName("td")[4];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
+                    txtValue0 = td0.textContent || td0.innerText;
+                    txtValue1 = td1.textContent || td1.innerText;
                     txtValue2 = td2.textContent || td2.innerText;
-                    if  ((txtValue.toUpperCase().indexOf(filter) > -1)  || (txtValue2.toUpperCase().indexOf(filter) > -1) ){
+                    txtValue3 = td3.textContent || td3.innerText;
+                    txtValue4 = td4.textContent || td4.innerText;
+                    if (   (txtValue.toUpperCase().indexOf(filter)  > -1)
+                        || (txtValue0.toUpperCase().indexOf(filter) > -1)
+                        || (txtValue1.toUpperCase().indexOf(filter) > -1)
+                        || (txtValue2.toUpperCase().indexOf(filter) > -1)
+                        || (txtValue3.toUpperCase().indexOf(filter) > -1)
+                        || (txtValue4.toUpperCase().indexOf(filter) > -1)
+                       )
+
+                    {
                         tr[i].style.display = "";
                         tr2[i].style.display = "";
 
@@ -152,7 +174,6 @@
                         tr2[i].style.display = "none";
                     }
                 }
-
             }
         }
     </script>

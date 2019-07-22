@@ -27,6 +27,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
+
+
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -43,7 +45,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('clientpro_index') }}">Client pro</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_graph_show') }}">Graph</a>
+                </li>
             </ul>
+
+
             <span class="navbar-text ">
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                  <a href="{{ path('fos_user_security_logout') }}" >Logout </a>
@@ -121,17 +128,18 @@
 
                     <ul class="list-unstyled" >
                         <li >
-                            <a style="color:red" href="{{ path('afficher_session') }}">Session</a>
+                            <a style="color : red" href="{{ path('afficher_session') }}">Session</a>
                         </li>
                         <li >
-                            <a style="color:red" href="{{ path('formateur_index') }}">Formateur</a>
+                            <a style="color : red" href="{{ path('formateur_index') }}">Formateur</a>
                         </li>
                         <li >
-                            <a style="color:red" href="{{ path('theme_index') }}">Theme</a>
+                            <a style="color : red" href="{{ path('theme_index') }}">Theme</a>
                         </li>
                         <li >
-                            <a style="color:red" href="{{ path('clientpro_index') }}">Client pro</a>
+                            <a style="color : red" href="{{ path('clientpro_index') }}">Client pro</a>
                         </li>
+
                     </ul>
 
                 </div>
@@ -160,7 +168,8 @@
     $(document).ready(function() {
         $('li.active').removeClass('active');
         $('a[href="' + location.pathname + '"]').closest('li').addClass('active');
-    });
+    }
+    );
 </script>
 </html>
 

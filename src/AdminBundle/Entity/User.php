@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
@@ -130,6 +130,14 @@ class User extends BaseUser
      * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\ClientPro",inversedBy="users")
      */
     protected $clientPro;
+
+
+    /**
+     *
+     */
+
+
+
 
 
 

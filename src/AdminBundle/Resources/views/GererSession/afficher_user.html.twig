@@ -49,7 +49,7 @@
                 <a class="col col-lg-2">
                     <a href="{{ path('editer_session',{'id' : id_session }) }}" ><button class="btn btn-danger monstyle">Modifier cette session<em class="fa fa-cog"></em></button> </a>
                 <a class="col col-lg-2">
-                    <a  href="{{ path('afficher_session') }}"> <button class="btn btn-danger monstyle"><i class="fa fa-chevron-left" aria-hidden="true"></i> retour</button> </a>
+                    <a  href="{{ path('afficher_session') }}" > <button class="btn btn-danger monstyle"><i class="fa fa-chevron-left" aria-hidden="true"></i> retour</button> </a>
             </div>
         </div>
         <div class="container-table100">
@@ -99,12 +99,14 @@
                             <table id="myTable2">
                                 <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column2">Type</th>
+                                    <th class="cell100 column2">Client</th>
                                     <th class="cell100 column3">Email</th>
                                     <th class="cell100 column4">Numéro de téléphone</th>
                                     <th class="cell100 column5">Profession</th>
                                     <th class="cell100 column6">Canal de communication</th>
-                                    <th class="cell100 column7"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
+                                    <th class="cell100 column7">Relancer participant</th>
+                                    <th class="cell100 column8"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
+
 
                                 </tr>
                                 </thead>
@@ -120,7 +122,8 @@
                                         <td class="cell100 column4">{{ x.numero_telephone }}</td>
                                         <td class="cell100 column5">{{ x.profession }}</td>
                                         <td class="cell100 column6">{{ x.canal_de_communication }}</td>
-                                        <td class="cell100 column7"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
+                                        <td class="cell100 column7"><a href="{{ path('relancer_participant') }}"><button class="btn btn-primary">Relancer</button></a></td>
+                                        <td class="cell100 column8"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

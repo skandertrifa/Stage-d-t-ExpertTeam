@@ -10,4 +10,5 @@ namespace AdminBundle\Repository;
  */
 class ClientProRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

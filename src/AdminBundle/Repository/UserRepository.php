@@ -10,4 +10,26 @@ namespace AdminBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCountType ($type)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->andWhere('c.type = :type')
+            ->setParameter('type', $type)
+            ->select('COUNT (c.id) as nombreDeClients ')
+            ->getQuery();
+
+        return $query->getSingleScalarResult();
+    }
+
+
+    public function getCountClientPro ($clientpro)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->andWhere('c.clientPro = :cp')
+            ->setParameter('cp', $clientpro)
+            ->select('COUNT (c.id) as nombreDeClients ')
+            ->getQuery();
+
+        return $query->getSingleScalarResult();
+    }
 }

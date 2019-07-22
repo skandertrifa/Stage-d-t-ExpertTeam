@@ -21,3 +21,6 @@ app:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /{_locale}
+admin_graph:
+    resource: "@AdminBundle/Controller/GraphController.php"
+    type:     annotation

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheets %}
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+        <!--===============================================================================================-->
+    {% endblock %}
+
+    <a  href="{{ path('afficher_user' , { id_session : id_session }) }}">
+        <button class="btn btn-danger" style="color: #0000F0;background-color: white;">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            retour
+        </button>
+    </a>
+    <h1>Modifier le paiement</h1>
+    {{ form_start(edit_form) }}
+    {{ form_row (edit_form.nom)}}
+    {{ form_row (edit_form.valider, {
+        label : 'Modifier'
+    }) }}
+    {{ form_end(edit_form) }}
+
+
+{% endblock %}

@@ -119,12 +119,20 @@
                                             {% else %} {{ x.client_pro }}
                                             {% endif %}
                                         </td>
-                                        <td class="cell100 column3"></td>
-                                        <td class="cell100 column4">{{ x.email }}</td>
-                                        <td class="cell100 column5">{{ x.numero_telephone }}</td>
-                                        <td class="cell100 column6">{{ x.profession }}</td>
-                                        <td class="cell100 column7">{{ x.canal_de_communication }}</td>
-                                        <td class="cell100 column8"><a href="{{ path('relancer_participant') }}"><button class="btn btn-primary">Relancer</button></a></td>
+                                        <td class="cell100 column3">{{ render(controller(
+                                                'AdminBundle:Paiement:afficherPaiement',
+                                                { 'id_session': id_session,
+                                                  'id_user' : x.id  }
+                                            )) }}</td>
+                                        <td class="cell100 column4">    {{ x.email }}   </td>
+                                        <td class="cell100 column5">    {{ x.numero_telephone }}    </td>
+                                        <td class="cell100 column6">    {{ x.profession }}  </td>
+                                        <td class="cell100 column7">    {{ x.canal_de_communication }}  </td>
+                                        <td class="cell100 column8">
+                                            <a href="{{ path('relancer_participant') }}">
+                                                <button class="btn btn-primary">Relancer</button>
+                                            </a>
+                                        </td>
                                         <td class="cell100 column9"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
                                     </tr>
                                 {% endfor %}

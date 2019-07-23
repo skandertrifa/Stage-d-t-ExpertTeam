@@ -196,14 +196,14 @@ class GererSessionController extends Controller
         // requête sql pour chercher les clients de la session
         $entityManager = $this->getDoctrine()->getManager();
         $conn = $entityManager->getConnection();
-        $sql = 'SELECT * FROM test.fos_user WHERE id IN (SELECT user_id FROM session_user WHERE session_id=? )';
+        $sql = 'SELECT * FROM test.fos_user WHERE id IN (SELECT user_id FROM paiement WHERE session_id=? )';
         $stmt = $conn->prepare($sql);
         $stmt->execute(array($id));
         $clients = $stmt->fetchAll();
 
         return $this->render('@Admin/GererSession/afficher_user.html.twig', array(
             'users' => $clients,
-            'id_session' => $id
+            'id_session' => $id,
         ));
     }
 
@@ -237,7 +237,7 @@ class GererSessionController extends Controller
         // requête sql pour chercher les clients de la session(conjugé)
         $entityManager = $this->getDoctrine()->getManager();
         $conn = $entityManager->getConnection();
-        $sql = 'SELECT * FROM test.fos_user WHERE id NOT IN (SELECT user_id FROM session_user WHERE session_id=? )';
+        $sql = 'SELECT * FROM test.fos_user WHERE id NOT IN (SELECT user_id FROM paiement WHERE session_id=? )';
         $stmt = $conn->prepare($sql);
         $stmt->execute(array($id));
         $clients = $stmt->fetchAll();
@@ -267,7 +267,7 @@ class GererSessionController extends Controller
             die();*/
             $entityManager = $this->getDoctrine()->getManager();
             $conn = $entityManager->getConnection();
-            $sql = 'INSERT INTO test.session_user (`session_id`, `user_id`) VALUES (?, ?)';
+            $sql = 'INSERT INTO test.paiement (`session_id`, `user_id`) VALUES (?, ?)';
             $stmt = $conn->prepare($sql);
             $stmt->execute([
                 $id_session,
@@ -287,7 +287,7 @@ class GererSessionController extends Controller
     public function removeUserFromSessionAction ($id_session,$id_user)
     {
         $conn = $this->getDoctrine()->getManager()->getConnection();
-        $sql = 'DELETE FROM test.session_user WHERE test.session_user.session_id = ? AND test.session_user.user_id = ? ';
+        $sql = 'DELETE FROM test.paiement WHERE test.paiement.session_id = ? AND test.paiement.user_id = ? ';
         $stmt = $conn->prepare($sql);
         $stmt->execute([
             $id_session,

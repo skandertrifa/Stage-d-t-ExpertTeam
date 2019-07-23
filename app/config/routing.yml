@@ -1,3 +1,7 @@
+admin_paiement:
+    resource: "@AdminBundle/Controller/PaiementController.php"
+    type:     annotation
+
 admin_client_pro:
     resource: "@AdminBundle/Controller/ClientProController.php"
     type:     annotation

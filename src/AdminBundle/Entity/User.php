@@ -25,9 +25,9 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\Session")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Paiement",mappedBy="user", fetch="EXTRA_LAZY")
      */
-    protected $session;
+    protected $paiement;
 
 
 
@@ -131,15 +131,6 @@ class User extends BaseUser
      */
     protected $clientPro;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="paiement", type="string", columnDefinition="enum('payé', 'partiel', 'non payé') ")
-     */
-    private $paiement;
-
-
-
 
 
 
@@ -152,39 +143,7 @@ class User extends BaseUser
         // your own logic
     }
 
-    /**
-     * Add session
-     *
-     * @param \AdminBundle\Entity\Session $session
-     *
-     * @return User
-     */
-    public function addSession(\AdminBundle\Entity\Session $session)
-    {
-        $this->session[] = $session;
 
-        return $this;
-    }
-
-    /**
-     * Remove session
-     *
-     * @param \AdminBundle\Entity\Session $session
-     */
-    public function removeSession(\AdminBundle\Entity\Session $session)
-    {
-        $this->session->removeElement($session);
-    }
-
-    /**
-     * Get session
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSession()
-    {
-        return $this->session;
-    }
 
     /**
      * Set type
@@ -354,24 +313,36 @@ class User extends BaseUser
         return $this->clientPro;
     }
 
+
+
     /**
-     * Set paiement
+     * Add paiement
      *
-     * @param string $paiement
+     * @param \AdminBundle\Entity\Paiement $paiement
      *
      * @return User
      */
-    public function setPaiement($paiement)
+    public function addPaiement(\AdminBundle\Entity\Paiement $paiement)
     {
-        $this->paiement = $paiement;
+        $this->paiement[] = $paiement;
 
         return $this;
     }
 
     /**
+     * Remove paiement
+     *
+     * @param \AdminBundle\Entity\Paiement $paiement
+     */
+    public function removePaiement(\AdminBundle\Entity\Paiement $paiement)
+    {
+        $this->paiement->removeElement($paiement);
+    }
+
+    /**
      * Get paiement
      *
-     * @return string
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPaiement()
     {

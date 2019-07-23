@@ -52,18 +52,12 @@ class Session
      * @ORM\Column(name="date_fin", type="date")
      */
     private $dateFin;
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="AdminBundle\Entity\User")
-     */
-    protected $user;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="paiement", type="string", columnDefinition="enum('soldée', 'partiel', 'non payé') ")
+     * @ORM\OneToMany(targetEntity="AdminBundle\Entity\Paiement",mappedBy="session", fetch="EXTRA_LAZY")
      */
-    private $paiement;
+    protected $paiement;
+
 
 
 
@@ -131,41 +125,6 @@ class Session
      */
     public function __construct()
     {
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add user
-     *
-     * @param \AdminBundle\Entity\User $user
-     *
-     * @return Session
-     */
-    public function addUser(\AdminBundle\Entity\User $user)
-    {
-        $this->user[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @param \AdminBundle\Entity\User $user
-     */
-    public function removeUser(\AdminBundle\Entity\User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**

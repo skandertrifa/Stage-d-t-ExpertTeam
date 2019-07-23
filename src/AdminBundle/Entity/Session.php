@@ -58,7 +58,15 @@ class Session
      */
     protected $user;
 
-    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="paiement", type="string", columnDefinition="enum('soldée', 'partiel', 'non payé') ")
+     */
+    private $paiement;
+
+
+
     /**
      * Get id
      *
@@ -230,5 +238,29 @@ class Session
     public function getFormateur()
     {
         return $this->formateur;
+    }
+
+    /**
+     * Set paiement
+     *
+     * @param string $paiement
+     *
+     * @return Session
+     */
+    public function setPaiement($paiement)
+    {
+        $this->paiement = $paiement;
+
+        return $this;
+    }
+
+    /**
+     * Get paiement
+     *
+     * @return string
+     */
+    public function getPaiement()
+    {
+        return $this->paiement;
     }
 }

@@ -100,12 +100,13 @@
                                 <thead>
                                 <tr class="row100 head">
                                     <th class="cell100 column2">Client</th>
-                                    <th class="cell100 column3">Email</th>
-                                    <th class="cell100 column4">Numéro de téléphone</th>
-                                    <th class="cell100 column5">Profession</th>
-                                    <th class="cell100 column6">Canal de communication</th>
-                                    <th class="cell100 column7">Relancer participant</th>
-                                    <th class="cell100 column8"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
+                                    <th class="cell100 column3"><i class="fa fa-money" aria-hidden="true"></i>&nbspPaiement</th>
+                                    <th class="cell100 column4">Email</th>
+                                    <th class="cell100 column5">Numéro de téléphone</th>
+                                    <th class="cell100 column6">Profession</th>
+                                    <th class="cell100 column7">Canal de communication</th>
+                                    <th class="cell100 column8">Relancer participant</th>
+                                    <th class="cell100 column9"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
 
 
                                 </tr>
@@ -118,12 +119,13 @@
                                             {% else %} {{ x.client_pro }}
                                             {% endif %}
                                         </td>
-                                        <td class="cell100 column3">{{ x.email }}</td>
-                                        <td class="cell100 column4">{{ x.numero_telephone }}</td>
-                                        <td class="cell100 column5">{{ x.profession }}</td>
-                                        <td class="cell100 column6">{{ x.canal_de_communication }}</td>
-                                        <td class="cell100 column7"><a href="{{ path('relancer_participant') }}"><button class="btn btn-primary">Relancer</button></a></td>
-                                        <td class="cell100 column8"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
+                                        <td class="cell100 column3"></td>
+                                        <td class="cell100 column4">{{ x.email }}</td>
+                                        <td class="cell100 column5">{{ x.numero_telephone }}</td>
+                                        <td class="cell100 column6">{{ x.profession }}</td>
+                                        <td class="cell100 column7">{{ x.canal_de_communication }}</td>
+                                        <td class="cell100 column8"><a href="{{ path('relancer_participant') }}"><button class="btn btn-primary">Relancer</button></a></td>
+                                        <td class="cell100 column9"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

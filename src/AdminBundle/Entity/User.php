@@ -131,10 +131,12 @@ class User extends BaseUser
      */
     protected $clientPro;
 
-
     /**
+     * @var string
      *
+     * @ORM\Column(name="paiement", type="string", columnDefinition="enum('payé', 'partiel', 'non payé') ")
      */
+    private $paiement;
 
 
 
@@ -350,5 +352,29 @@ class User extends BaseUser
     public function getClientPro()
     {
         return $this->clientPro;
+    }
+
+    /**
+     * Set paiement
+     *
+     * @param string $paiement
+     *
+     * @return User
+     */
+    public function setPaiement($paiement)
+    {
+        $this->paiement = $paiement;
+
+        return $this;
+    }
+
+    /**
+     * Get paiement
+     *
+     * @return string
+     */
+    public function getPaiement()
+    {
+        return $this->paiement;
     }
 }

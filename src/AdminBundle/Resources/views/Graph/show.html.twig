@@ -3,10 +3,12 @@
 {% block title %} Graph {% endblock %}
 
 {% block body %}
+
+
+    {# ****      Some Title Animation   ******* !#}
 <style>
     h1 {
-        width: 100px;
-        height: 100px;
+
         position: relative;
         -webkit-animation: mymove 3s;  /* Safari 4.0 - 8.0 */
         -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
@@ -16,13 +18,13 @@
 
     /* Safari 4.0 - 8.0 */
     @-webkit-keyframes mymove {
-        from {top: 0px;}
-        to {top: 200px}
+        from {top: 0px; left: 0px;}
+        to {top: 0px; left: 300px;}
     }
 
     @keyframes mymove {
-        from {top: 0px;}
-        to {top: 200px}
+        from {top: 0px; left: 0px;color: red}
+        to {top: 0px; left: 550px;color: blue}
     }
 
 

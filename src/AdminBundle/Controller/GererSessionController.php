@@ -306,9 +306,9 @@ class GererSessionController extends Controller
     public function relancerParticipantAction ()
     {
 
-        $message = (new \Swift_Message('Hello Email'));
+        $message = (new \Swift_Message('Un petit rappel'));
         $message->setFrom('skander.trifa2@gmail.com')
-                ->setTo('skander.trifa@gmail.com')
+                ->setTo(' skander.trifa@gmail.com')
                 ->setBody('Test Swift Mailer !', 'text/html');
         $this->get('mailer')->send($message);
 

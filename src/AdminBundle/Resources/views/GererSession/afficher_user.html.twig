@@ -35,7 +35,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
         <!--===============================================================================================-->
-        
+
 
     </head>
     <body>
@@ -143,7 +143,7 @@
                                         </td>
                                         <td class="cell100 column8">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                             <a href="{{ path('relancer_participant') }}">
-                                                <button class="btn btn-primary" id="Button">Relancer</button>
+                                                <button class="btn btn-primary" id="Buttonn">Relancer</button>
                                             </a>
                                         </td>
                                         <td class="cell100 column9"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
@@ -228,12 +228,13 @@
     <script>
         function f() {
             var x = document.getElementsByClassName("cell100 column3");
-            var x2 = document.getElementsByClassName("cell100 column8");
-
-            for (i = 0; i < x.length ; i++){
-                if (x[i].innerText == 'Payé'){
-                    document.getElementById("Button").disabled = true;
-                    x2[i].style.color="gray";
+            //var x2 = document.getElementsByClassName("cell100 column8");
+            var y = document.getElementsByClassName("btn btn-primary")
+            for (i = 1; i < x.length ; i++){
+                if (x[i].innerText == "Payé" ){
+                    y[i-1].disabled=true;
+                    // document.getElementById("Buttonn").disabled = true;
+                    //x2[i].style.color="gray";
                     //x2[i].style.textAlign="center";
                 }
             }

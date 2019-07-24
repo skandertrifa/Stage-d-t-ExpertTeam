@@ -1,2 +1,7 @@
-{{ paiement.nom }}
-
+{% if paiement.nom == 'Payé'%}
+<div style="color :green">{{ paiement.nom }}</div>
+{% elseif paiement.nom == 'Non payé'%}
+<div style="color :red ">{{ paiement.nom }} </div>
+{% elseif paiement.nom == 'Partiel'%}
+<div style="color :#d39e00 ">{{ paiement.nom }} </div>
+{% endif %}

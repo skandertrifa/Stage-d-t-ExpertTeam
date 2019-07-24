@@ -3,6 +3,8 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\ClientPro;
+use AdminBundle\Entity\Paiement;
+use AdminBundle\Entity\Session;
 use AdminBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -36,6 +38,31 @@ class GraphController extends Controller
             'vermgs' => $vermegs,
             'sofrecoms' =>$sofrecoms,
             'LOUPS' => $LOUPS,
+        ));
+    }
+    /**
+     * @Route("/session/{id_session}" ,name="show_paiement_chart")
+     */
+    public function showPaiementChartAction($id_session)
+    {
+        //todo SQL stmt to calculate % of paiement of a session
+
+
+        $repository = $this->getDoctrine()->getRepository(Paiement::class);
+
+
+        $payes = $repository->getCount('Payé',$id_session);
+        $non_payes = $repository->getCount('Non payé',$id_session);
+        $partiel = $repository->getCount('Partiel',$id_session);
+        $total = $repository->getCountTotal($id_session);
+
+
+
+        return $this->render('@Admin/Graph/show_paiement_chart.html.twig', array(
+            'payes' => $payes,
+            'non_payes' => $non_payes,
+            'partiel' =>$partiel,
+            'total' => $total,
         ));
     }
 

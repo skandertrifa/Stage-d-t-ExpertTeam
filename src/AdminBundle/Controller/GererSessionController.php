@@ -188,10 +188,6 @@ class GererSessionController extends Controller
 
     public function afficherUserAction($id)
     {
-        // id correpond à l'id de la session voulue
-        /*$repository = $this->getDoctrine()->getRepository(Session::class);
-        $session = $repository->findOneById($id);
-        $clients = $session->getUser();*/
 
         // requête sql pour chercher les clients de la session
         $entityManager = $this->getDoctrine()->getManager();

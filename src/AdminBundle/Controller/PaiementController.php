@@ -37,7 +37,8 @@ class PaiementController extends Controller
     }
 
     /**
-     * @Route("/edit/{id_session}/{id_user}")
+     * Modifier le paiement d'un participant/client pour une session
+     * @Route("/edit/{id_session}/{id_user}", name="edit_paiement", requirements={"id_session"="\d+", "id_user"="\d+"})
      */
     public function editPaiementAction(Request $request,$id_session,$id_user)
     {
@@ -49,7 +50,6 @@ class PaiementController extends Controller
         $paiement_id = $pay['id'];
         $repo = $this->getDoctrine()->getRepository(Paiement::class);
         $paiement = $repo->findOneById($paiement_id);
-        dump($paiement);die;
 
         $editForm = $this->createForm('AdminBundle\Form\PaiementType', $paiement);
         $editForm->handleRequest($request);
@@ -57,7 +57,11 @@ class PaiementController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success','Modification faite');
-            return $this->redirectToRoute('afficher_user', array('id' => $id_session));
+            //return $this->redirectToRoute('afficher_user', array('id' => $id_session));
+            $this->redirectToRoute('afficher_user',[
+                    'id' => $id_session,
+                ]
+            );
         }
 
         return $this->render('@Admin/PaiementController/edit_paiement.html.twig', array(

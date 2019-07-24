@@ -10,4 +10,28 @@ namespace AdminBundle\Repository;
  */
 class PaiementRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCount ($nom,$id_session)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->andWhere('p.session= :session_id')
+            ->andWhere('p.nom = :nom')
+            ->setParameters(array(
+                'nom' => $nom,
+                'session_id' => $id_session,
+            ))
+            ->select('COUNT (p.id) as NombreDePaiement ')
+            ->getQuery();
+
+        return $query->getSingleScalarResult();
+    }
+    public function getCountTotal ($id_session)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->andWhere('p.session= :session_id')
+            ->setParameter('session_id', $id_session)
+            ->select('COUNT (p.id) as NombreDePaiement ')
+            ->getQuery();
+
+        return $query->getSingleScalarResult();
+    }
 }

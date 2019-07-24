@@ -35,6 +35,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
         <!--===============================================================================================-->
+        
+
     </head>
     <body>
 
@@ -56,6 +58,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm">
+                        <!-- <div id="chart_div" ></div>-->
+
+                        {{ render(controller(
+                            'AdminBundle:Graph:showPaiementChart',
+                            { 'id_session': id_session  }
+                        )) }}
+
+
+
 
                     </div>
                     <div class="col-sm">
@@ -104,8 +115,8 @@
                                     <th class="cell100 column4">Email</th>
                                     <th class="cell100 column5">Numéro de téléphone</th>
                                     <th class="cell100 column6">Profession</th>
-                                    <th class="cell100 column7">Canal de communication</th>
-                                    <th class="cell100 column8">Relancer participant</th>
+                                    <th class="cell100 column7">Canal de communication<div style="float:right;">Modifier Paiement</div></th>
+                                    <th class="cell100 column8">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRelancer participant</th>
                                     <th class="cell100 column9"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
 
 
@@ -127,10 +138,12 @@
                                         <td class="cell100 column4">    {{ x.email }}   </td>
                                         <td class="cell100 column5">    {{ x.numero_telephone }}    </td>
                                         <td class="cell100 column6">    {{ x.profession }}  </td>
-                                        <td class="cell100 column7">    {{ x.canal_de_communication }}  </td>
-                                        <td class="cell100 column8">
+                                        <td class="cell100 column7">    {{ x.canal_de_communication }}
+                                            <div style="float:right"><a href="{{ path('edit_paiement',{ id_session : id_session , id_user: x.id }) }}"> <button class="btn btn-outline-secondary">edit</button> </a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+                                        </td>
+                                        <td class="cell100 column8">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                             <a href="{{ path('relancer_participant') }}">
-                                                <button class="btn btn-primary">Relancer</button>
+                                                <button class="btn btn-primary" id="Button">Relancer</button>
                                             </a>
                                         </td>
                                         <td class="cell100 column9"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
@@ -211,6 +224,22 @@
                 }
             }
         }
+    </script>
+    <script>
+        function f() {
+            var x = document.getElementsByClassName("cell100 column3");
+            var x2 = document.getElementsByClassName("cell100 column8");
+
+            for (i = 0; i < x.length ; i++){
+                if (x[i].innerText == 'Payé'){
+                    document.getElementById("Button").disabled = true;
+                    x2[i].style.color="gray";
+                    //x2[i].style.textAlign="center";
+                }
+            }
+
+        }
+        f();
     </script>
     <!--===============================================================================================-->
     <script src="{{ asset('js/main.js') }}"></script>

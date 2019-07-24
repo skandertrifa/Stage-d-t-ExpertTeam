@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}
 
 {% block body %}
     <a  href="{{ path('formateur_index') }}">
@@ -16,3 +16,205 @@
     }) }}
     {{ form_end(form) }}
 {% endblock %}
+#}
+{#
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        {% block stylesheets %}<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">{% endblock %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            .nice_template {
+                color: #999;
+                background: #fafafa;
+                font-family: 'Roboto', sans-serif;
+            }
+            .signup-form {
+                width: 425px;
+                margin: 0 auto;
+                padding: 30px 0;
+            }
+            .signup-form h2 {
+                color: #333;
+                font-weight: bold;
+                margin: 0 0 25px;
+            }
+            .signup-form form {
+                margin-bottom: 15px;
+                background: #fff;
+                border: 1px solid #f4f4f4;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                padding: 40px 50px;
+            }
+            .signup-form .form-group {
+                margin-bottom: 20px;
+            }
+            .signup-form label {
+                font-weight: normal;
+                font-size: 13px;
+            }
+            .signup-form input[type="checkbox"] {
+                margin-top: 2px;
+            }
+            .signup-form .btn {
+                font-size: 16px;
+                font-weight: bold;
+                background: #00c1c0;
+                border: none;
+                min-width: 140px;
+                outline: none !important;
+            }
+            .signup-form .btn:hover, .signup-form .btn:focus {
+                background: #00b3b3;
+            }
+            .signup-form a {
+                color: #00c1c0;
+                text-decoration: none;
+            }
+            .signup-form a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <div class="nice_template">
+    <div class="signup-form">
+        <form  method="post">
+
+
+            <h2>Création d'un formateur</h2>
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_widget (form.nom,{ 'attr' :
+                    {
+                        'class': "form-control",
+                        'name' : "Nom",
+                        'placeholder': "Nom",
+                        'required': "required",
+                    }
+                }           ) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.valider,{
+                    'label' : "Valider",
+                    'attr' :  {
+                        'class': 'btn btn-primary btn-lg',
+                        'type' :'sumbit',
+                    }
+                }
+                ) }}
+
+            </div>
+        </form>
+        {{ form_end(form) }}
+    </div>
+    </div>
+    </html>
+{% endblock body %}#}
+
+
+
+{% extends 'base.html.twig '%}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Connexion</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/util1.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main1.css')}}">
+        <!--===============================================================================================-->
+    </head>
+<body>
+
+
+
+        {{ form_start(form)}}
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+
+                    {{ form_start(form)}}
+                    <form action="{{ path("afficher_session") }}" method="post" class="login100-form validate-form fos_user_registration_register">
+
+
+                        <span class="login100-form-title p-b-33">
+						Création d'un formateur
+					</span>
+
+                        <div class="wrap-input100 validate-input">
+                            {{ form_errors(form.nom) }}
+                            {{ form_widget(form.nom,{ 'attr' : {'class': 'input100 ','placeholder':"Nom du formateur"  }}) }}
+                            <span class="focus-input100-1"></span>
+                            <span class="focus-input100-2"></span>
+                        </div>
+                        <div class="container-login100-form-btn m-t-20" >
+
+                            {{ form_widget(form.valider,{
+                                'label' : "Valider",
+                                'attr' :  {
+                                    'class': 'login100-form-btn',
+                                    'type' :'sumbit',
+                                    'id' : '_submit',
+                                    'name' : '_submit',
+                                }
+                            }
+                            ) }}
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </form>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+        <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+        <!--===============================================================================================-->
+        <script src="{{ asset('js/main1.js') }}"></script>
+        </body>
+        </html>
+
+
+
+
+{% endblock body %}

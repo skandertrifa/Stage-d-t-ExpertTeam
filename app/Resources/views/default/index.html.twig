@@ -1,76 +1,528 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ExpertTest &mdash; </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container-fluid">
+            <div class="d-flex align-items-center">
+                <div class="site-logo mr-auto w-25">
+                    <img src="{{ asset('images/logo_expert.png') }}"> </img>
+                    <a href="index.html"></a></div>
+
+                <div class="mx-auto text-center">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
+                            <li><a href="{{ path('homepage') }}" class="nav-link">Acceuil</a></li>
+                            <li><a href="#courses-section" class="nav-link">Sessions</a></li>
+                            <li><a href="#programs-section" class="nav-link">Programmes</a></li>
+                            <li><a href="#teachers-section" class="nav-link">Formateurs</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="ml-auto w-25">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+                        <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
+                            <li class="cta"><a href="{{ path('afficher_session') }}" class="nav-link"><span>Gestion</span></a></li>
+                        </ul>
+                    </nav>
+                    <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="intro-section" id="home-section">
+
+        <div class="slide-1" style="background-image: url('{{ asset('images/home_itservice_slider.jpg') }}');" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4">
+                                <h1  data-aos="fade-up" data-aos-delay="100">Expert Test</h1>
+                                <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Envie de booster votre carrière professionnelle?</p>
+                                <p data-aos="fade-up" data-aos-delay="300"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary py-3 px-5 btn-pill" style="background-color: #4272d7">S'enregistrer</a></p>
+
+                            </div>
+
+                            <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
+                                <form action="" method="post" class="form-box">
+                                    <h3 class="h4 text-black mb-4">Se connecter</h3>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Email Addresss">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="mot de passe">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary btn-pill" style="background-color: #4272d7" value="Connexion">
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="site-section courses-title" id="courses-section">
+        <div class="container">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+                    <h2 class="section-title">Les sessions de formation</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section courses-entry-wrap"  data-aos="fade-up" data-aos-delay="100">
+        <div class="container">
+            <div class="row">
+
+                <div class="owl-carousel col-12 nonloop-block-14">
+
+                    <div class="course bg-white h-100 align-self-stretch">
+                        <figure class="m-0">
+                            <a href="course-single.html"><img src="{{ asset('images/img_1.jpg') }}" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="course-inner-text py-4 px-4">
+
+                            <div class="meta"><span class="icon-clock-o"></span>Période de la session</div>
+                            <h3><a href="#">Angular</a></h3>
+                            <p>Développé par Google et la communauté Angular est un cadriciel (framework) côté client open source basé sur TypeScript dirigée par l'équipe du projet Angular à Google et par une communauté de particuliers et de sociétés</p>
+                        </div>
+                        <div class="d-flex border-top stats">
+                            <div class="py-3 px-4"><span class="icon-users"></span> </div>
+                        </div>
+                    </div>
+
+                    <div class="course bg-white h-100 align-self-stretch">
+                        <figure class="m-0">
+                            <a href="course-single.html"><img src="{{ asset('images/img_2.jpg') }}" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="course-inner-text py-4 px-4">
+                            <div class="meta"><span class="icon-clock-o"></span>Période de la session</div>
+                            <h3><a href="#">Spring</a></h3>
+                            <p>En informatique, Spring est un framework libre pour construire et définir l'infrastructure d'une application java3, dont il facilite le développement et les tests.</p>
+                        </div>
+                        <div class="d-flex border-top stats">
+                            <div class="py-3 px-4"><span class="icon-users"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="course bg-white h-100 align-self-stretch">
+                        <figure class="m-0">
+                            <a href="course-single.html"><img src="{{ asset('images/img_3.jpg') }}" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="course-inner-text py-4 px-4">
+                            <div class="meta"><span class="icon-clock-o"></span>Période de la session</div>
+                            <h3><a href="#">HTML , CSS , JS ..</a></h3>
+                            <p>Pour apprendre les bases de la programmation, je vous conseillerais de suivre ces cours là. Il y a des tonnes d'excellents programmes après parmi lesquels choisir.</p>
+                        </div>
+                        <div class="d-flex border-top stats">
+                            <div class="py-3 px-4"><span class="icon-users"></span></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="course bg-white h-100 align-self-stretch">
+                        <figure class="m-0">
+                            <a href="course-single.html"><img src="{{ asset('images/img_4.jpg') }}" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="course-inner-text py-4 px-4">
+                            <div class="meta"><span class="icon-clock-o"></span>Période de la session</div>
+                            <h3><a href="#">Symfony</a></h3>
+                            <p>Symfony est un ensemble de composants PHP ainsi qu'un framework MVC libre écrit en PHP. Il fournit des fonctionnalités modulables et adaptables qui permettent de faciliter et d’accélérer le développement d'un site web..</p>
+                        </div>
+                        <div class="d-flex border-top stats">
+                            <div class="py-3 px-4"><span class="icon-users"></span> </div>
+                        </div>
+                    </div>
+
+                    <div class="course bg-white h-100 align-self-stretch">
+                        <figure class="m-0">
+                            <a href="course-single.html"><img src="{{ asset('images/JEE.png') }}" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="course-inner-text py-4 px-4">
+                            <div class="meta"><span class="icon-clock-o"></span>Période de la session</div>
+                            <h3><a href="#">JEE</a></h3>
+                            <p>Java Enterprise Edition ( Java EE ), anciennement Java 2 Platform, Enterprise Edition ( J2EE ), actuellement Jakarta EE, est un ensemble de spécifications qui étend Java SE 8 [1] avec des spécifications pour des fonctionnalités d'entreprise telles que l' informatique répartie et les services Web. </p>
+                        </div>
+                        <div class="d-flex border-top stats">
+                            <div class="py-3 px-4"><span class="icon-users"></span></div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-7 text-center">
+                    <button class="customPrevBtn btn btn-primary m-1" style="background-color: #4272d7" >Précédent</button>
+                    <button class="customNextBtn btn btn-primary m-1" style="background-color: #4272d7" >Suivant</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="site-section" id="programs-section">
+        <div class="container">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-lg-7 text-center"  data-aos="fade-up" data-aos-delay="">
+                    <h2 class="section-title">Notre programme</h2>
+                    <p></p>
+                </div>
+            </div>
+            <div class="row mb-5 align-items-center">
+                <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <img src="{{ asset('images/undraw_youtube_tutorial.svg') }}" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="text-black mb-4">Nous sommes excellents en éducation</h2>
+                    <p class="mb-4"></p>
+
+                    <div class="d-flex align-items-center custom-icon-wrap mb-3">
+                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+                        <div><h3 class="m-0"></h3></div>
+                    </div>
+
+                    <div class="d-flex align-items-center custom-icon-wrap">
+                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+                        <div><h3 class="m-0"></h3></div>
+                    </div>
+
+                </div>
             </div>
 
-            <div id="status">
-                <p>
-                    <svg id="icon-status" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z" fill="#759E1A"/></svg>
+            <div class="row mb-5 align-items-center">
+                <div class="col-lg-7 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+                    <img src="{{ asset('images/undraw_teaching.svg') }}" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="text-black mb-4">Viser l'excellence</h2>
+                    <p class="mb-4"></p>
 
-                    Your application is now ready. You can start working on it at:
-                    <code>{{ base_dir }}</code>
-                </p>
+                    <div class="d-flex align-items-center custom-icon-wrap mb-3">
+                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+                        <div><h3 class="m-0"></h3></div>
+                    </div>
+
+                    <div class="d-flex align-items-center custom-icon-wrap">
+                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+                        <div><h3 class="m-0"></h3></div>
+                    </div>
+
+                </div>
             </div>
 
-            <div id="next">
-                <h2>What's next?</h2>
-                <p>
-                    <svg id="icon-book" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="-12.5 9 64 64" enable-background="new -12.5 9 64 64" xml:space="preserve">
-                        <path fill="#AAA" d="M6.8,40.8c2.4,0.8,4.5-0.7,4.9-2.5c0.2-1.2-0.3-2.1-1.3-3.2l-0.8-0.8c-0.4-0.5-0.6-1.3-0.2-1.9
-                            c0.4-0.5,0.9-0.8,1.8-0.5c1.3,0.4,1.9,1.3,2.9,2.2c-0.4,1.4-0.7,2.9-0.9,4.2l-0.2,1c-0.7,4-1.3,6.2-2.7,7.5
-                            c-0.3,0.3-0.7,0.5-1.3,0.6c-0.3,0-0.4-0.3-0.4-0.3c0-0.3,0.2-0.3,0.3-0.4c0.2-0.1,0.5-0.3,0.4-0.8c0-0.7-0.6-1.3-1.3-1.3
-                            c-0.6,0-1.4,0.6-1.4,1.7s1,1.9,2.4,1.8c0.8,0,2.5-0.3,4.2-2.5c2-2.5,2.5-5.4,2.9-7.4l0.5-2.8c0.3,0,0.5,0.1,0.8,0.1
-                            c2.4,0.1,3.7-1.3,3.7-2.3c0-0.6-0.3-1.2-0.9-1.2c-0.4,0-0.8,0.3-1,0.8c-0.1,0.6,0.8,1.1,0.1,1.5c-0.5,0.3-1.4,0.6-2.7,0.4l0.3-1.3
-                            c0.5-2.6,1-5.7,3.2-5.8c0.2,0,0.8,0,0.8,0.4c0,0.2,0,0.2-0.2,0.5c-0.2,0.3-0.3,0.4-0.2,0.7c0,0.7,0.5,1.1,1.2,1.1
-                            c0.9,0,1.2-1,1.2-1.4c0-1.2-1.2-1.8-2.6-1.8c-1.5,0.1-2.8,0.9-3.7,2.1c-1.1,1.3-1.8,2.9-2.3,4.5c-0.9-0.8-1.6-1.8-3.1-2.3
-                            c-1.1-0.7-2.3-0.5-3.4,0.3c-0.5,0.4-0.8,1-1,1.6c-0.4,1.5,0.4,2.9,0.8,3.4l0.9,1c0.2,0.2,0.6,0.8,0.4,1.5c-0.3,0.8-1.2,1.3-2.1,1
-                            c-0.4-0.2-1-0.5-0.9-0.9c0.1-0.2,0.2-0.3,0.3-0.5s0.1-0.3,0.1-0.3c0.2-0.6-0.1-1.4-0.7-1.6c-0.6-0.2-1.2,0-1.3,0.8
-                            C4.3,38.4,4.7,40,6.8,40.8z M46.1,20.9c0-4.2-3.2-7.5-7.1-7.5h-3.8C34.8,10.8,32.7,9,30.2,9L-2.3,9.1c-2.8,0.1-4.9,2.4-4.9,5.4
-                            L-7,58.6c0,4.8,8.1,13.9,11.6,14.1l34.7-0.1c3.9,0,7-3.4,7-7.6L46.1,20.9z M-0.3,36.4c0-8.6,6.5-15.6,14.5-15.6
-                            c8,0,14.5,7,14.5,15.6S22.1,52,14.2,52C6.1,52-0.3,45-0.3,36.4z M42.1,65.1c0,1.8-1.5,3.1-3.1,3.1H4.6c-0.7,0-3-1.8-4.5-4.4h30.4
-                            c2.8,0,5-2.4,5-5.4V17.9h3.7c1.6,0,2.9,1.4,2.9,3.1V65.1L42.1,65.1z"/>
-                    </svg>
+            <div class="row mb-5 align-items-center">
+                <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <img src="{{ asset('images/undraw_teacher.svg') }}" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="text-black mb-4">L'éducation c'est la vie</h2>
+                    <p class="mb-4"></p>
 
-                    Read the documentation to learn
-                    <a href="https://symfony.com/doc/{{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')[:3] }}/page_creation.html">
-                        How to create your first page in Symfony
-                    </a>
-                </p>
+                    <div class="d-flex align-items-center custom-icon-wrap mb-3">
+                        <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+                        <div><h3 class="m-0"></h3></div>
+                    </div>
+
+                    <div class="d-flex align-items-center custom-icon-wrap">
+                        <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+                        <div><h3 class="m-0"></h3></div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
     </div>
-{% endblock %}
 
-{% block stylesheets %}
-<style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 21px; margin-bottom: 1em; }
-    p { margin: 0 0 1em 0; }
-    a { color: #0000F0; }
-    a:hover { text-decoration: none; }
-    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
-    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
-    #welcome, #status { margin-bottom: 2em; }
-    #welcome h1 span { display: block; font-size: 75%; }
-    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
-    #icon-book { display: none; }
+    <div class="site-section" id="teachers-section">
+        <div class="container">
 
-    @media (min-width: 768px) {
-        #wrapper { width: 80%; margin: 2em auto; }
-        #icon-book { display: inline-block; }
-        #status a, #next a { display: block; }
+            <div class="row mb-5 justify-content-center">
+                <div class="col-lg-7 mb-5 text-center"  data-aos="fade-up" data-aos-delay="">
+                    <h2 class="section-title">Nos formateurs</h2>
+                    <p class="mb-5">petite description</p>
+                </div>
+            </div>
 
-        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
-    }
-</style>
-{% endblock %}
+            <div class="row">
+
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="teacher text-center">
+                        <img src="{{ asset('images/person_1.jpg') }}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+                        <div class="py-2">
+                            <h3 class="text-black">Nom prenom</h3>
+                            <p class="position">Enseignant de ...</p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="teacher text-center">
+                        <img src="{{ asset('images/person_2.jpg') }}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+                        <div class="py-2">
+                            <h3 class="text-black">Nom prenom</h3>
+                            <p class="position">Enseignant de ...</p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="teacher text-center">
+                        <img src="{{ asset('images/person_3.jpg') }}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+                        <div class="py-2">
+                            <h3 class="text-black">Nom prenom</h3>
+                            <p class="position">Enseignant de ...</p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section bg-image overlay" style="background-image: url('{{ asset('images/hero_1.jpg') }}');">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-8 text-center testimony">
+                    <img src="{{ asset('images/asma.jpg') }}" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
+                    <h3 class="mb-4">Asma Beltaief </h3>
+                    <blockquote>
+                        <p>&ldquo; C’est une formation qui permet d’être rapidement opérationnel. Pour ceux qui souhaitent s’initier au métier du Testing, je recommande cette formation via cet outil. Je pourrai être plus utile sur le terrain. Je suis comblé, je peux aller plus loin dans mon carrière. &rdquo;</p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section pb-0">
+
+        <div class="future-blobs">
+            <div class="blob_2">
+                <img src="{{ asset('images/blob_2.svg') }}" alt="Image">
+            </div>
+            <div class="blob_1">
+                <img src="{{ asset('images/blob_1.svg') }}" alt="Image">
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mb-5 justify-content-center" data-aos="fade-up" data-aos-delay="">
+                <div class="col-lg-7 text-center">
+                    <h2 class="section-title">Pourquoi nous choisir?</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ml-auto align-self-start"  data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="p-4 rounded bg-white why-choose-us-box">
+
+                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
+                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>
+                            <div><h3 class="m-0">Les meilleurs professionnels</h3></div>
+                        </div>
+
+                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
+                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
+                            <div><h3 class="m-0">Développez vos connaissances</h3></div>
+                        </div>
+
+                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light mb-3">
+                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-graduation-cap"></span></span></div>
+                            <div><h3 class="m-0">Meilleurs cours d'assistant d'enseignement</h3></div>
+                        </div>
+
+                        <div class="d-flex align-items-center custom-icon-wrap custom-icon-light">
+                            <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
+                            <div><h3 class="m-0">Meilleurs formateurs</h3></div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="col-lg-7 align-self-end"  data-aos="fade-left" data-aos-delay="200">
+                    <img src="{{ asset('images/person_transparent.png') }}" alt="Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- <div class="site-section bg-light" id="contact-section">
+     <div class="container">
+
+       <div class="row justify-content-center">
+         <div class="col-md-7">
+
+
+
+           <h2 class="section-title mb-3">Message Us</h2>
+           <p class="mb-5">Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.</p>
+
+           <form method="post" data-aos="fade">
+             <div class="form-group row">
+               <div class="col-md-6 mb-3 mb-lg-0">
+                 <input type="text" class="form-control" placeholder="First name">
+               </div>
+               <div class="col-md-6">
+                 <input type="text" class="form-control" placeholder="Last name">
+               </div>
+             </div>
+
+             <div class="form-group row">
+               <div class="col-md-12">
+                 <input type="text" class="form-control" placeholder="Subject">
+               </div>
+             </div>
+
+             <div class="form-group row">
+               <div class="col-md-12">
+                 <input type="email" class="form-control" placeholder="Email">
+               </div>
+             </div>
+             <div class="form-group row">
+               <div class="col-md-12">
+                 <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your message here."></textarea>
+               </div>
+             </div>
+
+             <div class="form-group row">
+               <div class="col-md-6">
+
+                 <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill" value="Send Message">
+               </div>
+             </div>
+
+           </form>
+         </div>
+       </div>
+     </div>
+   </div>   -->
+
+
+    <footer class="footer-section bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>A propos</h3>
+                    <p>Notre plateforme est destinée aux professionnels souhaitent s’entraîner à passer les certifications ISTQB, IQBBA, Selenium et Agile et ainsi tester leurs compétences pour garantir la réussite.
+                        Nous mettons à votre disposition une panoplie d’examens blancs et d’exercices corrigés sous forme de pack disponible pour chaque niveau, afin de rendre votre révision plus facile et vous aider à réussir votre certification.</p>
+                </div>
+
+                <div class="col-md-3 ml-auto">
+                    <h3>Liens de raccourci</h3>
+                    <ul class="list-unstyled footer-links">
+                        <li><a style="color: #4272d7"  href="#">Acceuil</a></li>
+                        <li><a  style="color: #4272d7" href="#">Mon compte</a></li>
+                        <li><a style="color: #4272d7"  href="#">Mon profil</a></li>
+                        <li><a style="color: #4272d7"  href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>S'inscire</h3>
+                    <p></p>
+                    <form action="#" class="footer-subscribe">
+                        <div class="d-flex mb-5">
+                            <input type="submit" class="btn btn-primary rounded-0" style="background-color: #4272d7"  value="S'inscire">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="row pt-5 mt-5 text-center">
+                <div class="col-md-12">
+                    <div class="border-top pt-5">
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+
+</div> <!-- .site-wrap -->
+
+<script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+<script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('js/aos.js') }}"></script>
+<script src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset('js/jquery.sticky.js') }}"></script>
+
+
+<script src="{{ asset('js/main_home.js') }}"></script>
+
+</body>
+</html>

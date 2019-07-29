@@ -58,6 +58,11 @@ class Session
      */
     protected $paiement;
 
+    /**
+     * @ORM\Column(type="text", unique=false, nullable=true)
+     */
+    private $description;
+
 
 
 
@@ -221,5 +226,54 @@ class Session
     public function getPaiement()
     {
         return $this->paiement;
+    }
+
+
+    /**
+     * Add paiement
+     *
+     * @param \AdminBundle\Entity\Paiement $paiement
+     *
+     * @return Session
+     */
+    public function addPaiement(\AdminBundle\Entity\Paiement $paiement)
+    {
+        $this->paiement[] = $paiement;
+
+        return $this;
+    }
+
+    /**
+     * Remove paiement
+     *
+     * @param \AdminBundle\Entity\Paiement $paiement
+     */
+    public function removePaiement(\AdminBundle\Entity\Paiement $paiement)
+    {
+        $this->paiement->removeElement($paiement);
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Session
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

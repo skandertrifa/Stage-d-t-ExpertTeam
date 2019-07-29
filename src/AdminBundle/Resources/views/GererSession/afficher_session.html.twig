@@ -36,6 +36,27 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
         <!--===============================================================================================-->
     </head>
+
+
+    <style>
+        .tiptext {
+            background:#ccc;
+            border: 1px #333 solid;
+            padding:5px;
+            width:100px;
+        }
+        .description {
+            color: red;
+            display:none;
+            background-color: black;
+            position:absolute;
+            border:1px solid #000;
+            width:400px;
+            height:400px;
+        }
+    </style>
+
+
     <body>
 
 
@@ -48,10 +69,9 @@
 
             <a class="col col-lg-2">
                 <a href="{{ path('ajouter_session') }}" > <button class="btn btn-danger monstyle"><i class="fa fa-plus" aria-hidden="true"></i>Ajouter une session </button>  </a>
-
             </div>
     </div>
-        <div class="container-table100">
+        <div class="container-table100" >
             <div class="container">
                 <div class="row">
                     <div class="col-sm">
@@ -69,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="wrap-table100">
+            <div class="wrap-table100" >
                 <div class="table100 ver1">
                     <div class="table100-firstcol">
                         <table id="myTable">
@@ -104,8 +124,9 @@
                                     {#<th class="cell100 column5"><i class="fa fa-money" aria-hidden="true"></i>&nbspPaiement</th>#}
                                     <th class="cell100 column6"><img src="{{ asset('images/icons/teacher_icon/teacher3.png') }}">&nbsp&nbspFormateur</th>
                                     <th class="cell100 column7"><em class="fa fa-cog"></em></th>
-                                    <th class="cell100 column8"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></th>
-                                    <th class="cell100 column9"><i class="fa fa-user" aria-hidden="true"></i></th>
+                                    <th class="cell100 column8">Description</th>
+                                    <th class="cell100 column9">Modifier</th>
+                                    <th class="cell100 column10">Afficher les participants </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -129,11 +150,16 @@
                                         <td class="cell100 column6">{{ x.formateur }}</td>
                                         <td class="cell100 column7">
                                             <a  href="{{ path('supprimer_session',{'id' : x.id}) }}"><a class="btn btn-danger" href="#">
-                                                    <i class="fa fa-trash-o fa-lg "></i> Supprimer</a>
+                                                    <i class="fa fa-trash-o fa-lg "></i> </a>
                                             </a>
                                         </td>
-                                        <td class="cell100 column8"> <a  href="{{ path('editer_session',{'id' : x.id}) }}"><button  class="btn btn-secondary ">Modifier</button></a> </td>
-                                        <td class="cell100 column9"> <a  href="{{ path('afficher_user',{'id' : x.id}) }}"><button class="btn btn-secondary ">  Afficher les participants </button></a> </td>
+                                        <td class="cell100 column8">
+                                            <button class="btn btn-outline-secondary tiptext"><i class="fa fa-info" aria-hidden="true"></i>
+                                                <div class="description"> {{ x.description }} </div>
+                                            </button>
+                                        </td>
+                                        <td class="cell100 column9"> <a  href="{{ path('editer_session',{'id' : x.id}) }}"><button  class="btn btn-secondary "><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></button></a> </td>
+                                        <td class="cell100 column10"> <a  href="{{ path('afficher_user',{'id' : x.id}) }}"><button class="btn btn-secondary "> <i class="fa fa-user" aria-hidden="true"></i> </button></a> </td>
 
                                     </tr>
                                 {% endfor %}
@@ -206,6 +232,17 @@
 
     <!--===============================================================================================-->
     <script src="{{ asset('js/main.js') }}"></script>
+    <!--===============================================================================================-->
+
+    <script>
+
+    $(".tiptext").mouseover(function() {
+    $(this).children(".description").show();
+    }).mouseout(function() {
+    $(this).children(".description").hide();
+    });
+    </script>
+
 
     </body>
     </html>

@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Tests\Extension\Core\Type\DateTypeTest;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -149,6 +150,7 @@ class GererSessionController extends Controller
                 'choices'  => $choix,
                 ] )
             ->add('valider',SubmitType::class)
+            ->add('description')
             ->add('formateur',EntityType::class,[
                 'class' => 'AdminBundle\Entity\Formateur',
                 'multiple' => false,
@@ -303,14 +305,14 @@ class GererSessionController extends Controller
 
     //***************************************************
 
-    public function relancerParticipantAction ()
+    public function relancerParticipantAction ($email)
     {
-
         $message = (new \Swift_Message('Un petit rappel'));
         $message->setFrom('skander.trifa2@gmail.com')
-                ->setTo(' skander.trifa@gmail.com')
+                ->setTo($email)
                 ->setBody('Test Swift Mailer !', 'text/html');
         $this->get('mailer')->send($message);
+        $this->addFlash('success', 'Email de relance envoyé !');
 
         return $this->redirectToRoute('afficher_session');
 

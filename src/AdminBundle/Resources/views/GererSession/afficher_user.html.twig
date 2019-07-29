@@ -115,9 +115,10 @@
                                     <th class="cell100 column4">Email</th>
                                     <th class="cell100 column5">Numéro de téléphone</th>
                                     <th class="cell100 column6">Profession</th>
-                                    <th class="cell100 column7">Canal de communication<div style="float:right;">Modifier Paiement</div></th>
-                                    <th class="cell100 column8">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRelancer participant</th>
-                                    <th class="cell100 column9"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
+                                    <th class="cell100 column7">Canal de communication</th>
+                                    <th class="cell100 column8">Modifier Paiement</th>
+                                    <th class="cell100 column9">Relancer participant</th>
+                                    <th class="cell100 column10"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
 
 
                                 </tr>
@@ -138,15 +139,15 @@
                                         <td class="cell100 column4">    {{ x.email }}   </td>
                                         <td class="cell100 column5">    {{ x.numero_telephone }}    </td>
                                         <td class="cell100 column6">    {{ x.profession }}  </td>
-                                        <td class="cell100 column7">    {{ x.canal_de_communication }}
-                                            <div style="float:right"><a href="{{ path('edit_paiement',{ id_session : id_session , id_user: x.id }) }}"> <button class="btn btn-outline-secondary">edit</button> </a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
-                                        </td>
-                                        <td class="cell100 column8">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                            <a href="{{ path('relancer_participant') }}">
+                                        <td class="cell100 column7">    {{ x.canal_de_communication }}</td>
+                                        <td class="cell100 column8">  <a href="{{ path('edit_paiement',{ id_session : id_session , id_user: x.id }) }}"> <button class="btn btn-outline-secondary">edit</button> </a>
+
+                                        <td class="cell100 column9">
+                                            <a href="{{ path('relancer_participant',{ email : x.email }) }}">
                                                 <button class="btn btn-primary" id="Buttonn">Relancer</button>
                                             </a>
                                         </td>
-                                        <td class="cell100 column9"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
+                                        <td class="cell100 column10"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

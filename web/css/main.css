@@ -129,7 +129,7 @@ iframe {
   content: "";
   display: block;
   position: absolute;
-  background-color: #b3b3b3;
+  background-color: #000000;
   height: 100%;
   width: calc(100% - 30px);
   top: 0;
@@ -164,7 +164,8 @@ iframe {
 }
 
 .container-table100 {
-  max-width: 1366px;
+  background-image: url('../images/home_itservice_slider.jpg');
+  max-width: 100%;
   margin: 0 auto;
   min-height: 100vh;
   display: -webkit-box;
@@ -198,7 +199,7 @@ th, td {
 }
 
 .column1 {
-  width: 100%;
+  width: 500px;
   padding-left: 40px;
 }
 
@@ -224,11 +225,20 @@ th, td {
 }
 
 .column7 {
-  width: 330px;
+  width: 170px;
 }
 
 .column8 {
-  width: 305px;
+  width: 170px;
+}
+.column9 {
+  width: 170px;
+}
+.column10 {
+  width: 170px;
+}
+.column11 {
+  width: 170px;
 }
 
 .table100 th {

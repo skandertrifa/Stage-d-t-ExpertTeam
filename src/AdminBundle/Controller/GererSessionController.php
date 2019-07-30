@@ -307,10 +307,15 @@ class GererSessionController extends Controller
 
     public function relancerParticipantAction ($email)
     {
-        $message = (new \Swift_Message('Un petit rappel'));
+        $message = (new \Swift_Message('Relance de paiement '));
         $message->setFrom('skander.trifa2@gmail.com')
                 ->setTo($email)
-                ->setBody('Test Swift Mailer !', 'text/html');
+                ->setBody("«Madame, Monsieur,\n 
+Sauf erreur de notre part, nous sommes toujours en attente de votre paiement.
+Si toutefois votre règlement nous parvenait avant réception de ce courrier, veuillez ne pas tenir compte de celui-ci. 
+Vous remerciant de faire le nécessaire, et restant à votre entière disposition pour toute question, nous vous prions d\'agréer, Madame, Monsieur, l\'expression de nos salutations distinguées. 
+\n
+Expert Team", 'text/html');
         $this->get('mailer')->send($message);
         $this->addFlash('success', 'Email de relance envoyé !');
 

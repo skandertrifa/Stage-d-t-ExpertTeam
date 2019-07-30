@@ -34,15 +34,15 @@ security:
                 provider: fos_userbundle
                 csrf_token_generator: Security.csrf.token_manager
                 check_path:             fos_user_security_check
-                default_target_path: afficher_session
+                default_target_path: homepage
                 always_use_default_target_path: true
-                failure_path: fos_user_security_login
+                failure_path: homepage
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
 
             logout:
                 path: fos_user_security_logout
-                target: afficher_session
+                target: homepage
 
             anonymous:    true
     access_control:

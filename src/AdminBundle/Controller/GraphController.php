@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 /**
  * Graph controller.
  *
- * @Route("graph")
+ * @Route("admin/graph")
  */
 class GraphController extends Controller
 {

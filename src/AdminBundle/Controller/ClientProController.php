@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Clientpro controller.
  *
- * @Route("clientpro")
+ * @Route("admin/clientpro")
  */
 class ClientProController extends Controller
 {

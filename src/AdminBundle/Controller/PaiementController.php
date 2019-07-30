@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Clientpro controller.
  *
- * @Route("paiement")
+ * @Route("admin/paiement")
  */
 class PaiementController extends Controller
 {

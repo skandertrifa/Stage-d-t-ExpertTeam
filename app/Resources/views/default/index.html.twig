@@ -28,6 +28,7 @@
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
+
 <div class="site-wrap">
 
     <div class="site-mobile-menu site-navbar-target">
@@ -62,7 +63,9 @@
                 <div class="ml-auto w-25">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
-                            <li class="cta"><a href="{{ path('afficher_session') }}" class="nav-link"><span>Gestion</span></a></li>
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <li class="cta"><a href="{{ path('fos_user_security_logout') }}" class="nav-link"><span>Logout</span></a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                     <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
@@ -87,19 +90,19 @@
                             </div>
 
                             <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                                <form action="" method="post" class="form-box">
-                                    <h3 class="h4 text-black mb-4">Se connecter</h3>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email Addresss">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="mot de passe">
-                                    </div>
 
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-primary btn-pill" style="background-color: #4272d7" value="Connexion">
-                                    </div>
-                                </form>
+                                 {% if is_granted('ROLE_ADMIN') %}
+                                     <h1 >Bonjour, {{ app.user }}</h1>
+                                     <p>Vous êtes connecté en tant qu'Admin</p>
+                                     <a href="{{ path('afficher_session') }}"><button class="customPrevBtn btn btn-primary m-1" style="background-color: #4272d7" >Espace Admin</button></a>
+
+
+                                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY')%}
+                                    {{ render(controller(
+                                        'fos_user.security.controller:loginAction'
+                                    )) }}
+                                {% else  %}   <h1 style="color:blue">Bonjour, {{ app.user }}</h1>
+                            {% endif %}
 
                             </div>
                         </div>
@@ -469,13 +472,7 @@
                 </div>
 
                 <div class="col-md-3 ml-auto">
-                    <h3>Liens de raccourci</h3>
-                    <ul class="list-unstyled footer-links">
-                        <li><a style="color: #4272d7"  href="#">Acceuil</a></li>
-                        <li><a  style="color: #4272d7" href="#">Mon compte</a></li>
-                        <li><a style="color: #4272d7"  href="#">Mon profil</a></li>
-                        <li><a style="color: #4272d7"  href="#">Blog</a></li>
-                    </ul>
+
                 </div>
 
                 <div class="col-md-4">

@@ -8,7 +8,7 @@ admin_client_pro:
 
 admin_theme:
     resource: "@AdminBundle/Resources/config/routing/theme.yml"
-    prefix:     /theme
+    prefix:     admin/theme
 
 admin_formateur:
     resource: "@AdminBundle/Controller/FormateurController.php"
@@ -16,7 +16,7 @@ admin_formateur:
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /session
+    prefix:   /admin/session
 
 app:
     resource: '@AppBundle/Controller/'
@@ -24,7 +24,7 @@ app:
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    prefix:   /{_locale}
+
 admin_graph:
     resource: "@AdminBundle/Controller/GraphController.php"
     type:     annotation

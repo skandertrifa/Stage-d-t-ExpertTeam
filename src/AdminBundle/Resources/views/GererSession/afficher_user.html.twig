@@ -39,6 +39,23 @@
 
     </head>
     <body>
+    <style>
+        .tiptext {
+            background:#ccc;
+            border: 1px #333 solid;
+            padding:5px;
+            width:100px;
+        }
+        .description {
+            color: red;
+            display:none;
+            background-color: black;
+            position:absolute;
+            border:1px solid #000;
+            width:400px;
+            height:400px;
+        }
+    </style>
 
 
     <div class="limiter">
@@ -112,13 +129,14 @@
                                 <tr class="row100 head">
                                     <th class="cell100 column2">Client</th>
                                     <th class="cell100 column3"><i class="fa fa-money" aria-hidden="true"></i>&nbspPaiement</th>
-                                    <th class="cell100 column4">Email</th>
-                                    <th class="cell100 column5">Numéro de téléphone</th>
-                                    <th class="cell100 column6">Profession</th>
-                                    <th class="cell100 column7">Canal de communication</th>
-                                    <th class="cell100 column8">Modifier Paiement</th>
-                                    <th class="cell100 column9">Relancer participant</th>
-                                    <th class="cell100 column10"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
+                                    <th class="cell100 column4"><i class="fa fa-money" aria-hidden="true"></i>Description</th>
+                                    <th class="cell100 column5">Email</th>
+                                    <th class="cell100 column6">Numéro de téléphone</th>
+                                    <th class="cell100 column7">Profession</th>
+                                    <th class="cell100 column8">Canal de communication</th>
+                                    <th class="cell100 column9">Modifier Paiement</th>
+                                    <th class="cell100 column10">Relancer participant</th>
+                                    <th class="cell100 column11"><em title="removeUser" class="fa fa-cog" style="color : black"></em></th>
 
 
                                 </tr>
@@ -136,18 +154,32 @@
                                                 { 'id_session': id_session,
                                                   'id_user' : x.id  }
                                             )) }}</td>
-                                        <td class="cell100 column4">    {{ x.email }}   </td>
-                                        <td class="cell100 column5">    {{ x.numero_telephone }}    </td>
-                                        <td class="cell100 column6">    {{ x.profession }}  </td>
-                                        <td class="cell100 column7">    {{ x.canal_de_communication }}</td>
-                                        <td class="cell100 column8">  <a href="{{ path('edit_paiement',{ id_session : id_session , id_user: x.id }) }}"> <button class="btn btn-outline-secondary">edit</button> </a>
+                                        <td class="cell100 column4">
+                                            <button class="btn btn-outline-secondary tiptext"><i class="fa fa-info" aria-hidden="true"></i>
 
-                                        <td class="cell100 column9">
+                                            <div class="description">
+                                            {{ render(controller(
+                                                'AdminBundle:Paiement:afficherDescriptionPaiement',
+                                                { 'id_session': id_session,
+                                                    'id_user' : x.id  }
+                                            )) }}
+                                            </div>
+
+                                            </button>
+
+                                        </td>
+                                        <td class="cell100 column5">    {{ x.email }}   </td>
+                                        <td class="cell100 column6">    {{ x.numero_telephone }}    </td>
+                                        <td class="cell100 column7">    {{ x.profession }}  </td>
+                                        <td class="cell100 column8">    {{ x.canal_de_communication }}</td>
+                                        <td class="cell100 column9">  <a href="{{ path('edit_paiement',{ id_session : id_session , id_user: x.id }) }}"> <button class="btn btn-outline-secondary">edit</button> </a>
+
+                                        <td class="cell100 column10">
                                             <a href="{{ path('relancer_participant',{ email : x.email }) }}">
                                                 <button class="btn btn-primary" id="Buttonn">Relancer</button>
                                             </a>
                                         </td>
-                                        <td class="cell100 column10"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
+                                        <td class="cell100 column11"><a href="{{ path('remove_userFromSession',{ id_session : id_session , id_user: x.id }) }}" ><i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color : red"></i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -245,6 +277,16 @@
     </script>
     <!--===============================================================================================-->
     <script src="{{ asset('js/main.js') }}"></script>
+    <!--===============================================================================================-->
+
+    <script>
+
+        $(".tiptext").mouseover(function() {
+            $(this).children(".description").show();
+        }).mouseout(function() {
+            $(this).children(".description").hide();
+        });
+    </script>
 
     </body>
     </html>

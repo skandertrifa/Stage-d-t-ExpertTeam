@@ -28,7 +28,10 @@ class Paiement
      */
     private $nom;
 
-
+    /**
+     * @ORM\Column(type="text", unique=false, nullable=true)
+     */
+    private $description;
 
 
     /**
@@ -145,5 +148,29 @@ class Paiement
     public function getSession()
     {
         return $this->session;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Paiement
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

@@ -52,10 +52,15 @@
                 <div class="mx-auto text-center">
                     <nav class="site-navigation position-relative text-right" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
-                            <li><a href="{{ path('homepage') }}" class="nav-link">Acceuil</a></li>
+                            <li><a href="#home-section" class="nav-link">Accueil</a></li>
                             <li><a href="#courses-section" class="nav-link">Sessions</a></li>
                             <li><a href="#programs-section" class="nav-link">Programmes</a></li>
                             <li><a href="#teachers-section" class="nav-link">Formateurs</a></li>
+
+                            {% if is_granted ('ROLE_ADMIN') %}
+                                {% else %}
+                            <li><a href="{{ path('fos_user_registration_register') }}" class="nav-link">S'enregistrer</a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
@@ -74,6 +79,7 @@
         </div>
 
     </header>
+    {% block body_content %}
 
     <div class="intro-section" id="home-section">
 
@@ -85,8 +91,10 @@
                             <div class="col-lg-6 mb-4">
                                 <h1  data-aos="fade-up" data-aos-delay="100">Expert Test</h1>
                                 <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Envie de booster votre carrière professionnelle?</p>
+                                {#{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                {% else %}
                                 <p data-aos="fade-up" data-aos-delay="300"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary py-3 px-5 btn-pill" style="background-color: #4272d7">S'enregistrer</a></p>
-
+                                {% endif %}#}
                             </div>
 
                             <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
@@ -96,7 +104,7 @@
                                      <p>Vous êtes connecté en tant qu'Admin</p>
                                      <a href="{{ path('afficher_session') }}"><button class="customPrevBtn btn btn-primary m-1" style="background-color: #4272d7" >Espace Admin</button></a>
 
-
+                                {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %} <h1 style="color:blue">Bonjour, {{ app.user }}</h1>
                                 {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY')%}
                                     {{ render(controller(
                                         'fos_user.security.controller:loginAction'
@@ -460,7 +468,7 @@
        </div>
      </div>
    </div>   -->
-
+    {% endblock body_content %}
 
     <footer class="footer-section bg-white">
         <div class="container">

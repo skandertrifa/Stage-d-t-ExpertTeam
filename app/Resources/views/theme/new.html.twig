@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}
 
 {% block body %}
     <a  href="{{ path('theme_index') }}">
@@ -13,4 +13,102 @@
         {{ form_widget(form) }}
     {{ form_end(form) }}
 
-{% endblock %}
+{% endblock %}#}
+{% extends 'base.html.twig '%}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Création d'un thème</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/util1.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main1.css')}}">
+        <!--===============================================================================================-->
+    </head>
+    <body>
+
+
+
+    {{ form_start(form)}}
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('{{ asset('images/home_itservice_slider.jpg') }}');">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+
+                {{ form_start(form)}}
+                <form action="{{ path("afficher_session") }}" method="post" class="login100-form validate-form fos_user_registration_register">
+
+
+                        <span class="login100-form-title p-b-33">
+						Création d'un Thème
+					</span>
+
+                    <div class="wrap-input100 validate-input">
+                        {{ form_errors(form.nom) }}
+                        {{ form_widget(form.nom,{ 'attr' : {'class': 'input100 ','placeholder':"Nom du thème"  }}) }}
+                        <span class="focus-input100-1"></span>
+                        <span class="focus-input100-2"></span>
+                    </div>
+                    <div class="container-login100-form-btn m-t-20" >
+
+                        {{ form_widget(form.valider,{
+                            'label' : "Valider",
+                            'attr' :  {
+                                'class': 'login100-form-btn',
+                                'type' :'sumbit',
+                                'id' : '_submit',
+                                'name' : '_submit',
+                            }
+                        }
+                        ) }}
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                </form>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('js/main1.js') }}"></script>
+    </body>
+    </html>
+
+
+
+
+{% endblock body %}

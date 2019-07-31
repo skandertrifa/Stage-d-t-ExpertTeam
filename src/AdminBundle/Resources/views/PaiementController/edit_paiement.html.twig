@@ -23,6 +23,7 @@
     <h1>Modifier le paiement</h1>
     {{ form_start(edit_form) }}
     {{ form_row (edit_form.nom)}}
+    {{ form_row(edit_form.description) }}
     {{ form_row (edit_form.valider, {
         label : 'Modifier'
     }) }}

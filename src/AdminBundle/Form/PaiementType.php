@@ -24,6 +24,7 @@ class PaiementType extends AbstractType
                     'Partiel' => 'Partiel',
                 ]
                 ])
+                ->add('description')
                 ->add('valider',SubmitType::class);
 
 

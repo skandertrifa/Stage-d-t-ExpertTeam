@@ -70,4 +70,30 @@ class PaiementController extends Controller
     ));
     }
 
+    /**
+     * Afficher une petite description de l'état de  paiement d'un client p/p à une session
+     * @Route("/{id_session}/{id_user}", name="afficher_paiement")
+     */
+    public function afficherDescriptionPaiementAction($id_session,$id_user)
+    {
+        $repository1 = $this->getDoctrine()->getRepository('AdminBundle:User');
+        $repository2 = $this->getDoctrine()->getRepository('AdminBundle:Session');
+        $user = $repository1->findOneById($id_user);
+        $session = $repository2->findOneById($id_session);
+
+
+        $conn = $this->getDoctrine()->getManager()->getConnection();
+        $sql = "SELECT * FROM test.paiement WHERE user_id =? AND session_id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array($id_user,$id_session));
+        $paiement = $stmt->fetch();
+
+
+        return $this->render('@Admin/PaiementController/afficher_description_paiement.html.twig', array(
+            'paiement' => $paiement,
+        ));
+    }
+
+
+
 }
